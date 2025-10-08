@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Gauge, Zap, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
@@ -34,13 +34,13 @@ export default function HeroSection() {
   // Memoize parallax transform
   const parallaxTransform = useMemo(
     () => `translateY(${scrollY * 0.5}px)`,
-    [scrollY]
+    [scrollY],
   );
 
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 }
+    visible: { opacity: 1, y: 0 },
   };
 
   const statVariants = {
@@ -48,8 +48,8 @@ export default function HeroSection() {
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, delay: 0.2 + i * 0.1 }
-    })
+      transition: { duration: 0.6, delay: 0.2 + i * 0.1 },
+    }),
   };
 
   return (
@@ -64,7 +64,7 @@ export default function HeroSection() {
         style={{ transform: parallaxTransform }}
         aria-hidden="true"
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/90 via-zinc-950/60 to-zinc-950 z-10" />
+        <div className="absolute inset-0 bg-linear-to-b from-zinc-950/90 via-zinc-950/60 to-zinc-950 z-10" />
         <img
           src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=80"
           alt=""
@@ -84,7 +84,7 @@ export default function HeroSection() {
           style={{
             backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
                              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px'
+            backgroundSize: "50px 50px",
           }} 
         />
       </div>
@@ -98,7 +98,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
         >
           {/* Badge 
-          <div className="inline-flex items-center gap-2 bg-zinc-800/50 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-zinc-700">
+          <div className="inline-flex items-center gap-2 bg-zinc-800/50 backdrop-blur-xs px-4 py-2 rounded-full mb-6 border border-zinc-700">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true" />
             <span className="text-sm text-zinc-300">Garage de performance automobile</span>
           </div>
@@ -106,7 +106,7 @@ export default function HeroSection() {
 
           {/* Title */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
-            <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
               Performance et précision
             </span>
             <br />
@@ -125,7 +125,7 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 py-6 shadow-2xl shadow-zinc-700/50 hover:shadow-zinc-500/50 transition-all duration-300 group"
+              className="bg-linear-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 py-6 shadow-2xl shadow-zinc-700/50 hover:shadow-zinc-500/50 transition-all duration-300 group"
               asChild
             >
               <a href="#contact">
@@ -135,7 +135,7 @@ export default function HeroSection() {
             </Button>
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 py-6 shadow-2xl shadow-zinc-700/50 hover:shadow-zinc-500/50 transition-all duration-300 group"
+              className="bg-linear-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 py-6 shadow-2xl shadow-zinc-700/50 hover:shadow-zinc-500/50 transition-all duration-300 group"
               asChild
             >
               <a href="#services">
@@ -160,7 +160,7 @@ export default function HeroSection() {
                   variants={statVariants}
                   initial="hidden"
                   animate="visible"
-                  className="bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-2xl p-6 hover:bg-zinc-800/50 hover:border-zinc-700 transition-all duration-300"
+                  className="bg-zinc-900/50 backdrop-blur-xs border border-zinc-800 rounded-2xl p-6 hover:bg-zinc-800/50 hover:border-zinc-700 transition-all duration-300"
                   role="listitem"
                 >
                   <Icon className="w-8 h-8 text-zinc-300 mb-3 mx-auto" aria-hidden="true" />
@@ -174,7 +174,7 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom Gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent z-15 pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-zinc-950 to-transparent z-15 pointer-events-none" aria-hidden="true" />
     </section>
   );
 }

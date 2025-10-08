@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Menu, X, Phone, Mail, Facebook, Instagram, Twitter } from "lucide-react";
@@ -68,12 +68,12 @@ export default function Layout({ children, currentPageName }) {
                   className="text-sm font-medium text-zinc-300 hover:text-white transition-colors duration-200 relative group"
                 >
                   {item.title}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-zinc-300 to-zinc-500 group-hover:w-full transition-all duration-300" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-zinc-300 to-zinc-500 group-hover:w-full transition-all duration-300" />
                 </a>
               ))}
               <Button 
                 asChild
-                className="bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold shadow-lg shadow-zinc-700/50 hover:shadow-zinc-500/50 transition-all duration-300"
+                className="bg-linear-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold shadow-lg shadow-zinc-700/50 hover:shadow-zinc-500/50 transition-all duration-300"
               >
                 <a href={createPageUrl("Home") + "#contact"}>
                   Prendre rendez-vous
@@ -107,7 +107,7 @@ export default function Layout({ children, currentPageName }) {
               ))}
               <Button 
                 asChild
-                className="w-full bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold"
+                className="w-full bg-linear-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold"
               >
                 <a href={createPageUrl("Home") + "#contact"} onClick={() => setMobileMenuOpen(false)}>
                   Prendre rendez-vous

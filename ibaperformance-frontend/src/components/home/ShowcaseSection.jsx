@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 
@@ -10,7 +9,7 @@ const projects = [
     before: "431 ch",
     after: "520 ch",
     image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80",
-    description: "Reprogrammation complète + downpipe inox"
+    description: "Reprogrammation complète + downpipe inox",
   },
   {
     id: 2,
@@ -19,7 +18,7 @@ const projects = [
     before: "500 ch",
     after: "540 ch",
     image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
-    description: "Setup châssis complet + échappement Akrapovic"
+    description: "Setup châssis complet + échappement Akrapovic",
   },
   {
     id: 3,
@@ -28,7 +27,7 @@ const projects = [
     before: "600 ch",
     after: "720 ch",
     image: "https://images.unsplash.com/photo-1614162692292-7ac56d7f36c7?w=800&q=80",
-    description: "Optimisation turbo + admission carbone"
+    description: "Optimisation turbo + admission carbone",
   },
   {
     id: 4,
@@ -37,7 +36,7 @@ const projects = [
     before: "476 ch",
     after: "580 ch",
     image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80",
-    description: "Repro + échappement + freinage racing"
+    description: "Repro + échappement + freinage racing",
   },
   {
     id: 5,
@@ -46,7 +45,7 @@ const projects = [
     before: "230 ch",
     after: "340 ch",
     image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80",
-    description: "Stage 2 + turbo upgrade + intercooler"
+    description: "Stage 2 + turbo upgrade + intercooler",
   },
   {
     id: 6,
@@ -55,8 +54,8 @@ const projects = [
     before: "565 ch",
     after: "850 ch",
     image: "https://images.unsplash.com/photo-1542362567-b07e54358753?w=800&q=80",
-    description: "Turbos hybrides + cartographie sur mesure"
-  }
+    description: "Turbos hybrides + cartographie sur mesure",
+  },
 ];
 
 export default function ShowcaseSection() {
@@ -93,16 +92,16 @@ export default function ShowcaseSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className={`group relative overflow-hidden rounded-2xl cursor-pointer ${
-                index === 0 ? 'md:col-span-2 md:row-span-2' : ''
+                index === 0 ? "md:col-span-2 md:row-span-2" : ""
               }`}
             >
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-4/3 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
                 
                 {/* Content Overlay */}
                 <div className="absolute inset-0 p-6 flex flex-col justify-end">
@@ -111,7 +110,7 @@ export default function ShowcaseSection() {
                   <p className="text-sm text-zinc-300 mb-4">{project.description}</p>
                   
                   {/* Before/After Stats */}
-                  <div className="flex items-center gap-4 bg-zinc-900/80 backdrop-blur-sm rounded-lg p-3 w-fit">
+                  <div className="flex items-center gap-4 bg-zinc-900/80 backdrop-blur-xs rounded-lg p-3 w-fit">
                     <div>
                       <div className="text-xs text-zinc-500">Avant</div>
                       <div className="text-lg font-bold text-white">{project.before}</div>
@@ -119,7 +118,7 @@ export default function ShowcaseSection() {
                     <ChevronRight className="w-5 h-5 text-zinc-500" />
                     <div>
                       <div className="text-xs text-zinc-500">Après</div>
-                      <div className="text-lg font-bold bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+                      <div className="text-lg font-bold bg-linear-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
                         {project.after}
                       </div>
                     </div>

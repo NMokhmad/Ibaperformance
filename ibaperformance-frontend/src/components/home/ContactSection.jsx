@@ -1,10 +1,8 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 
 export default function ContactSection() {
@@ -13,26 +11,26 @@ export default function ContactSection() {
       icon: Phone,
       title: "Téléphone",
       value: "+33 1 23 45 67 89",
-      link: "tel:+33123456789"
+      link: "tel:+33123456789",
     },
     {
       icon: Mail,
       title: "Email",
       value: "contact@ibaperformance.fr",
-      link: "mailto:contact@ibaperformance.fr"
+      link: "mailto:contact@ibaperformance.fr",
     },
     {
       icon: MapPin,
       title: "Adresse",
       value: "123 Avenue de la Performance, 75001 Paris",
-      link: "#"
+      link: "#",
     },
     {
       icon: Clock,
       title: "Horaires",
       value: "Lun - Ven: 9h - 18h / Sam: 9h - 12h",
-      link: "#"
-    }
+      link: "#",
+    },
   ];
 
   return (
@@ -108,7 +106,6 @@ export default function ContactSection() {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="grayscale"
               />
             </motion.div>
           </motion.div>
@@ -180,7 +177,7 @@ export default function ContactSection() {
 
               <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg py-6 shadow-xl group"
+                className="w-full bg-linear-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg py-6 shadow-xl group"
               >
                 Envoyer ma demande
                 <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />

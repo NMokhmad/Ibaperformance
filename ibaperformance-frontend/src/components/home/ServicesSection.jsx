@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { Cpu, Wrench, Trophy, Package } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,29 +9,29 @@ const services = [
     title: "Reprogrammation moteur / ECU",
     description: "Optimisation des paramètres moteur pour libérer la puissance cachée. Cartographie sur mesure adaptée à vos besoins.",
     features: ["Gain de puissance jusqu'à 30%", "Réduction consommation", "Suppression limiteurs"],
-    color: "from-red-500 to-orange-500"
+    color: "from-red-500 to-orange-500",
   },
   {
     icon: Wrench,
     title: "Entretien hautes performances",
     description: "Maintenance spécialisée pour véhicules de sport et préparés. Diagnostic précis et interventions expertes.",
     features: ["Révision complète", "Diagnostic électronique", "Réglages précis"],
-    color: "from-blue-500 to-cyan-500"
+    color: "from-blue-500 to-cyan-500",
   },
   {
     icon: Trophy,
     title: "Préparation circuit",
     description: "Transformation de votre véhicule pour la piste. Optimisation totale : moteur, châssis, freinage et aérodynamique.",
     features: ["Setup châssis", "Freinage racing", "Allègement"],
-    color: "from-purple-500 to-pink-500"
+    color: "from-purple-500 to-pink-500",
   },
   {
     icon: Package,
     title: "Installation pièces racing",
     description: "Montage professionnel de pièces de compétition. Turbo, échappement, admission, suspensions et plus encore.",
     features: ["Turbo & compresseur", "Échappement racing", "Kit admission"],
-    color: "from-green-500 to-emerald-500"
-  }
+    color: "from-green-500 to-emerald-500",
+  },
 ];
 
 export default function ServicesSection() {
@@ -71,9 +70,9 @@ export default function ServicesSection() {
             >
               <Card className="h-full bg-white border-zinc-200 hover:border-zinc-300 transition-all duration-300 group hover:shadow-xl overflow-hidden">
                 <CardHeader className="relative">
-                  <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-10 rounded-bl-full group-hover:scale-150 transition-transform duration-500`} />
+                  <div className={`absolute top-0 right-0 w-32 h-32 bg-linear-to-br ${service.color} opacity-10 rounded-bl-full group-hover:scale-150 transition-transform duration-500`} />
                   <div className="flex items-start justify-between mb-4">
-                    <div className={`w-14 h-14 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`w-14 h-14 bg-linear-to-br ${service.color} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                       <service.icon className="w-7 h-7 text-white" />
                     </div>
                   </div>
@@ -87,7 +86,7 @@ export default function ServicesSection() {
                   <ul className="space-y-2">
                     {service.features.map((feature, i) => (
                       <li key={i} className="flex items-center gap-2 text-sm text-zinc-700">
-                        <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${service.color}`} />
+                        <div className={`w-1.5 h-1.5 rounded-full bg-linear-to-r ${service.color}`} />
                         {feature}
                       </li>
                     ))}
@@ -114,7 +113,7 @@ export default function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-16 bg-gradient-to-r from-zinc-900 to-zinc-800 rounded-3xl p-8 md:p-12 text-center shadow-2xl"
+          className="mt-16 bg-linear-to-r from-zinc-900 to-zinc-800 rounded-3xl p-8 md:p-12 text-center shadow-2xl"
         >
           <h3 className="text-3xl font-bold text-white mb-4">
             Un projet de préparation sur mesure ?
@@ -124,7 +123,7 @@ export default function ServicesSection() {
           </p>
           <Button 
             size="lg"
-            className="bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 shadow-xl"
+            className="bg-linear-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 shadow-xl"
             asChild
           >
             <a href="#contact">

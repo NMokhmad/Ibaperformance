@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { Award, Users, Heart, Target } from "lucide-react";
 
@@ -6,23 +5,23 @@ const values = [
   {
     icon: Target,
     title: "Passion",
-    description: "L'automobile est notre passion. Chaque projet est traité avec le plus grand soin et l'attention aux détails."
+    description: "L'automobile est notre passion. Chaque projet est traité avec le plus grand soin et l'attention aux détails.",
   },
   {
     icon: Award,
     title: "Qualité",
-    description: "Nous utilisons uniquement des pièces de qualité et des équipements de diagnostic professionnels."
+    description: "Nous utilisons uniquement des pièces de qualité et des équipements de diagnostic professionnels.",
   },
   {
     icon: Heart,
     title: "Rigueur",
-    description: "Méthodologie rigoureuse et respect des normes pour garantir fiabilité et performances durables."
+    description: "Méthodologie rigoureuse et respect des normes pour garantir fiabilité et performances durables.",
   },
   {
     icon: Users,
     title: "Expertise",
-    description: "Une équipe de techniciens spécialisés et formés aux dernières technologies automobiles."
-  }
+    description: "Une équipe de techniciens spécialisés et formés aux dernières technologies automobiles.",
+  },
 ];
 
 export default function AboutSection() {
@@ -89,13 +88,13 @@ export default function AboutSection() {
                 alt="Atelier IbaPerformance"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/50 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-zinc-950/50 to-transparent" />
             </div>
             
             {/* Floating Card 
             <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-6 max-w-xs">
               <div className="flex items-center gap-4 mb-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-zinc-800 to-zinc-600 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-linear-to-br from-zinc-800 to-zinc-600 rounded-lg flex items-center justify-center">
                   <Award className="w-6 h-6 text-white" />
                 </div>
                 <div>
