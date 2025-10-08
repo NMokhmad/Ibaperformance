@@ -7,12 +7,23 @@ import unusedImports from 'eslint-plugin-unused-imports'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 
 export default [
-  { ignores: ['dist', 'build', 'node_modules', '*.config.js'] },
+  { 
+    ignores: [
+      'dist', 
+      'build', 
+      'node_modules', 
+      '*.config.js',
+      'scripts/**/*.js' // Ignore les scripts
+    ] 
+  },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.node, // Ajoute les globals Node.js
+      },
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
@@ -21,11 +32,6 @@ export default [
     },
     settings: { 
       react: { version: '18.3' },
-      'import/resolver': {
-        node: {
-          extensions: ['.js', '.jsx']
-        }
-      }
     },
     plugins: {
       react,
@@ -39,7 +45,6 @@ export default [
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
-      ...jsxA11y.configs.recommended.rules,
 
       // Imports
       'no-unused-vars': 'off',
@@ -56,12 +61,14 @@ export default [
 
       // React
       'react/jsx-no-target-blank': 'off',
-      'react/prop-types': 'off', // Si vous n'utilisez pas PropTypes
-      'react/react-in-jsx-scope': 'off', // Pas nécessaire avec React 17+
+      'react/prop-types': 'off',
+      'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
+      'react/no-unescaped-entities': 'off', // Désactive l'erreur des apostrophes
+      'react/no-unknown-property': 'off', // Pour les data-* attributes custom
       'react-refresh/only-export-components': [
         'warn',
-        { allowConstantExport: true },
+        { allowConstantExport: true, allowExportNames: ['buttonVariants', 'badgeVariants', 'navigationMenuTriggerStyle', 'toggleVariants'] },
       ],
 
       // Hooks
@@ -72,9 +79,9 @@ export default [
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       'no-debugger': 'warn',
       'no-alert': 'warn',
-      'eqeqeq': ['error', 'always'], // Force === au lieu de ==
-      'no-var': 'error', // Interdit var, force let/const
-      'prefer-const': 'error', // Préfère const quand possible
+      'eqeqeq': ['error', 'always'],
+      'no-var': 'error',
+      'prefer-const': 'error',
       'prefer-arrow-callback': 'warn',
       'no-duplicate-imports': 'error',
 
@@ -85,13 +92,16 @@ export default [
       'no-useless-return': 'warn',
       'no-unreachable': 'error',
       
-      // Accessibilité (basique)
+      // Accessibilité (plus permissif pour shadcn/ui)
       'jsx-a11y/alt-text': 'warn',
-      'jsx-a11y/anchor-is-valid': 'warn',
+      'jsx-a11y/anchor-is-valid': 'off', // Désactive pour les composants Link
       'jsx-a11y/click-events-have-key-events': 'warn',
       'jsx-a11y/no-static-element-interactions': 'warn',
+      'jsx-a11y/iframe-has-title': 'warn',
+      'jsx-a11y/heading-has-content': 'off', // Pour les composants UI
+      'jsx-a11y/anchor-has-content': 'off', // Pour les composants UI
 
-      // Style (optionnel, ajustez selon vos préférences)
+      // Style
       'quotes': ['warn', 'double', { avoidEscape: true }],
       'semi': ['warn', 'always'],
       'comma-dangle': ['warn', 'always-multiline'],

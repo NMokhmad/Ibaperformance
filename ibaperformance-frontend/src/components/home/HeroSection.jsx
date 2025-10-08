@@ -123,6 +123,7 @@ export default function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            {/* 
             <Button 
               size="lg"
               className="bg-linear-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 py-6 shadow-2xl shadow-zinc-700/50 hover:shadow-zinc-500/50 transition-all duration-300 group"
@@ -133,6 +134,7 @@ export default function HeroSection() {
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </a>
             </Button>
+                */}
             <Button 
               size="lg"
               className="bg-linear-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 py-6 shadow-2xl shadow-zinc-700/50 hover:shadow-zinc-500/50 transition-all duration-300 group"

@@ -2,11 +2,19 @@ import Layout from "./Layout.jsx";
 
 import Home from "./Home";
 
+import Realisations from "./Realisations";
+
+import Blog from "./Blog";
+
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 
 const PAGES = {
     
     Home: Home,
+    
+    Realisations: Realisations,
+    
+    Blog: Blog,
     
 };
 
@@ -36,6 +44,10 @@ function PagesContent() {
                 
                 
                 <Route path="/Home" element={<Home />} />
+                
+                <Route path="/Realisations" element={<Realisations />} />
+                
+                <Route path="/Blog" element={<Blog />} />
                 
             </Routes>
         </Layout>
