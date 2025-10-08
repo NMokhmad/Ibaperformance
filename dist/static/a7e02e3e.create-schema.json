@@ -1,0 +1,180 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "titre",
+        "type": "string"
+      },
+      {
+        "options": {
+          "source": "titre"
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "rows": 4,
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "type": "image"
+          }
+        ],
+        "name": "images",
+        "type": "array"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Préparation moteur",
+              "value": "moteur"
+            },
+            {
+              "title": "Échappement",
+              "value": "echappement"
+            },
+            {
+              "title": "Admission",
+              "value": "admission"
+            },
+            {
+              "title": "Esthétique",
+              "value": "esthetique"
+            },
+            {
+              "title": "Suspension",
+              "value": "suspension"
+            },
+            {
+              "title": "Freinage",
+              "value": "freinage"
+            }
+          ]
+        },
+        "name": "categorie",
+        "type": "string",
+        "title": "Catégorie"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "date",
+        "type": "date"
+      }
+    ],
+    "name": "realisation",
+    "type": "document",
+    "title": "Réalisations"
+  },
+  {
+    "fields": [
+      {
+        "name": "nomGarage",
+        "type": "string",
+        "title": "Nom du garage"
+      },
+      {
+        "name": "telephone",
+        "type": "string",
+        "title": "Téléphone"
+      },
+      {
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "name": "adresse",
+        "type": "text"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "instagram",
+        "type": "url",
+        "title": "Lien Instagram"
+      },
+      {
+        "name": "horaires",
+        "type": "text"
+      }
+    ],
+    "name": "settings",
+    "type": "document",
+    "title": "Paramètres du site"
+  }
+]
