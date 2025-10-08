@@ -26,7 +26,7 @@ const projects = [
     category: "Reprogrammation Stage 1",
     before: "600 ch",
     after: "720 ch",
-    image: "https://images.unsplash.com/photo-1614162692292-7ac56d7f36c7?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
     description: "Optimisation turbo + admission carbone",
   },
   {
