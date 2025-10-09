@@ -8,7 +8,7 @@ import logo from "/assets/Favorite 2.jpg";
 const navigationItems = [
   { title: "Accueil", url: createPageUrl("Home"), section: "hero" },
   { title: "Services", url: createPageUrl("Home") + "#services", section: "services" },
-  { title: "Réalisations", url: createPageUrl("Realisations"), section: "realisations" },
+  { title: "Réalisations", url: createPageUrl("Home")+ "#realisations" , section: "realisations" },
   { title: "Blog", url: createPageUrl("Blog"), section: "blog" }, // Added Blog page
   { title: "À propos", url: createPageUrl("Home") + "#apropos", section: "apropos" },
   { title: "Contact", url: createPageUrl("Home") + "#contact", section: "contact" },
@@ -71,6 +71,7 @@ export default function Layout({ children, currentPageName }) {
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-zinc-300 to-zinc-500 group-hover:w-full transition-all duration-300" />
                 </a>
               ))}
+              {/* 
               <Button 
                 asChild
                 className="bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold shadow-lg shadow-zinc-700/50 hover:shadow-zinc-500/50 transition-all duration-300"
@@ -79,6 +80,7 @@ export default function Layout({ children, currentPageName }) {
                   Prendre rendez-vous
                 </a>
               </Button>
+              */}
             </nav>
 
             {/* Mobile Menu Button */}
