@@ -152,8 +152,7 @@ export default function ProjectModal({ project, onClose }) {
                 </a>
               </Button>
               <Button
-                variant="outline"
-                className="flex-1 border-zinc-700 text-white hover:bg-zinc-800"
+                className="flex-1 bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold"
                 onClick={onClose}
               >
                 Fermer
