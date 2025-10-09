@@ -57,7 +57,7 @@ export default function AboutSection() {
               développons des solutions sur mesure adaptées à chaque véhicule et à chaque usage.
             </p>
 
-            {/* Stats */}
+            {/* Stats 
             <div className="grid grid-cols-3 gap-6 mb-8">
               <div>
                 <div className="text-3xl font-bold text-zinc-950 mb-1">500+</div>
@@ -72,6 +72,7 @@ export default function AboutSection() {
                 <div className="text-sm text-zinc-600">Satisfaction client</div>
               </div>
             </div>
+                */}
           </motion.div>
 
           {/* Right Column - Image */}
@@ -110,7 +111,7 @@ export default function AboutSection() {
           </motion.div>
         </div>
 
-        {/* Values Grid */}
+        {/* Values Grid 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -118,10 +119,10 @@ export default function AboutSection() {
           transition={{ duration: 0.6 }}
           className="mt-24"
         >
+           
           <h3 className="text-3xl font-bold text-zinc-950 text-center mb-12">
             Nos valeurs
           </h3>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <motion.div
@@ -143,6 +144,7 @@ export default function AboutSection() {
             ))}
           </div>
         </motion.div>
+            */}
       </div>
     </section>
   );

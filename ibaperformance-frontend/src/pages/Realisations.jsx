@@ -335,8 +335,10 @@ export default function RealisationsPage() {
               Prêt à transformer votre véhicule ?
             </h2>
             <p className="text-lg text-zinc-400 mb-8 max-w-2xl mx-auto">
-              Contactez-nous pour discuter de votre projet de préparation. 
+              Contactez-moi pour discuter de votre projet.
+            {/* 
               Nous créons des solutions sur mesure adaptées à vos besoins et à votre budget.
+            */}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -344,15 +346,15 @@ export default function RealisationsPage() {
                 className="bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 shadow-xl"
                 asChild
               >
-                <a href="#contact">
-                  Demander un devis
+                <a href="/#contact">
+                  Me contacter
                   <ChevronRight className="w-5 h-5 ml-2" />
                 </a>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-zinc-600 text-white hover:bg-zinc-800 hover:border-zinc-500 font-semibold text-lg px-8"
+                className="bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 shadow-xl"
                 asChild
               >
                 <a href="/">

@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { ChevronRight, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { motion } from "framer-motion";
+import { ChevronRight, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function ShowcaseSection() {
   const projects = [
@@ -75,7 +75,7 @@ export default function ShowcaseSection() {
             <span className="text-sm font-medium text-zinc-200">Portfolio</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Nos réalisations
+            Mes réalisations
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
             Découvrez quelques-unes de nos préparations. Chaque projet est unique et 

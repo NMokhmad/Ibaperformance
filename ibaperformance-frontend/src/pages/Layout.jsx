@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Menu, X, Phone, Mail, Facebook, Instagram, Twitter } from "lucide-react";
-import { Button } from "@/components/ui/button";
+/*import { Button } from "@/components/ui/button";*/
 import logo from "/assets/Favorite 2.jpg";
 
 const navigationItems = [
@@ -107,6 +107,7 @@ export default function Layout({ children, currentPageName }) {
                   {item.title}
                 </a>
               ))}
+              {/*
               <Button 
                 asChild
                 className="w-full bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold"
@@ -115,6 +116,7 @@ export default function Layout({ children, currentPageName }) {
                   Prendre rendez-vous
                 </a>
               </Button>
+              */}
             </div>
           </div>
         )}
@@ -186,7 +188,7 @@ export default function Layout({ children, currentPageName }) {
           <div className="border-t border-zinc-800 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-sm text-zinc-500">
-                © 2024 IbaPerformance. Tous droits réservés.
+                © 2025 IbaPerformance. Tous droits réservés.
               </p>
               <div className="flex gap-6 text-sm text-zinc-500">
                 <a href="#" className="hover:text-zinc-300 transition-colors">Mentions légales</a>
@@ -200,4 +202,3 @@ export default function Layout({ children, currentPageName }) {
     </div>
   );
 }
-

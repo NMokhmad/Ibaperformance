@@ -51,8 +51,7 @@ export default function ContactSection() {
             Discutons de votre projet
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            Remplissez le formulaire ou contactez-nous directement. 
-            Nous vous répondons sous 24h pour étudier ensemble votre projet de préparation.
+            Remplissez le formulaire ou contactez-moi directement. Je vous répondrai dans les meilleurs délais.
           </p>
         </motion.div>
 
@@ -182,10 +181,11 @@ export default function ContactSection() {
                 Envoyer ma demande
                 <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-
+              {/* Consent Text 
               <p className="text-xs text-zinc-500 text-center">
                 En soumettant ce formulaire, vous acceptez d'être recontacté par notre équipe.
               </p>
+                */}
             </form>
           </motion.div>
         </div>

@@ -91,7 +91,7 @@ export default function ServicesSection() {
                       </li>
                     ))}
                   </ul>
-
+                  { /* CTA Button 
                   <Button 
                     variant="outline" 
                     className="w-full border-zinc-300 text-zinc-950 hover:bg-zinc-100 group-hover:border-zinc-400 transition-all"
@@ -101,13 +101,14 @@ export default function ServicesSection() {
                       Demander un devis
                     </a>
                   </Button>
+                  */}  
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </div>
 
-        {/* CTA Banner */}
+        {/* CTA Banner 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -120,7 +121,7 @@ export default function ServicesSection() {
           </h3>
           <p className="text-zinc-300 mb-8 max-w-2xl mx-auto">
             Discutons de vos objectifs de performance. Nous créons des solutions adaptées à votre budget et à vos ambitions.
-          </p>
+          </p> 
           <Button 
             size="lg"
             className="bg-linear-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 shadow-xl"
@@ -130,7 +131,9 @@ export default function ServicesSection() {
               Contactez-nous
             </a>
           </Button>
+              
         </motion.div>
+              */}
       </div>
     </section>
   );
