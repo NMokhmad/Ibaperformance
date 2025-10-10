@@ -1,64 +1,9 @@
 import { motion } from "framer-motion";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { projects } from "../../data/realisations";
 
 export default function ShowcaseSection() {
-  const projects = [
-  {
-    id: 1,
-    title: "BMW M3 F80",
-    category: "Reprogrammation Stage 2",
-    before: "431 ch",
-    after: "520 ch",
-    image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80",
-    description: "Reprogrammation complète + downpipe inox",
-  },
-  {
-    id: 2,
-    title: "Porsche 911 GT3",
-    category: "Préparation circuit",
-    before: "500 ch",
-    after: "540 ch",
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
-    description: "Setup châssis complet + échappement Akrapovic",
-  },
-  {
-    id: 3,
-    title: "Audi RS6 C8",
-    category: "Reprogrammation Stage 1",
-    before: "600 ch",
-    after: "720 ch",
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
-    description: "Optimisation turbo + admission carbone",
-  },
-  {
-    id: 4,
-    title: "Mercedes AMG GT",
-    category: "Pack Performance",
-    before: "476 ch",
-    after: "580 ch",
-    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80",
-    description: "Repro + échappement + freinage racing",
-  },
-  {
-    id: 5,
-    title: "Golf 7 GTI",
-    category: "Optimisation complète",
-    before: "230 ch",
-    after: "340 ch",
-    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80",
-    description: "Stage 2 + turbo upgrade + intercooler",
-  },
-  {
-    id: 6,
-    title: "Nissan GT-R R35",
-    category: "Préparation extrême",
-    before: "565 ch",
-    after: "850 ch",
-    image: "https://images.unsplash.com/photo-1542362567-b07e54358753?w=800&q=80",
-    description: "Turbos hybrides + cartographie sur mesure",
-  },
-];
 
   return (
     <section id="realisations" className="relative py-24 bg-zinc-950">
@@ -85,7 +30,9 @@ export default function ShowcaseSection() {
 
         {/* Bento Grid Gallery */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {projects.map((project, index) => (
+          {projects
+          .slice(0, 6)
+          .map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}

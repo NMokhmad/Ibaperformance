@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { ChevronRight, Calendar } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 
 export default function ProjectCard({ project, index, onClick }) {
+
   return (
+  <Link to={`/Realisations/${project.slug}`}>
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -11,14 +14,14 @@ export default function ProjectCard({ project, index, onClick }) {
       transition={{ duration: 0.6, delay: index * 0.1 }}
       onClick={onClick}
       className="group relative overflow-hidden rounded-2xl cursor-pointer bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-all duration-300"
-    >
+      >
       {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
           src={project.image}
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-        />
+          />
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent" />
         
         {/* Category Badge */}
@@ -77,5 +80,6 @@ export default function ProjectCard({ project, index, onClick }) {
         </div>
       </div>
     </motion.div>
+  </Link>
   );
 }

@@ -3,6 +3,7 @@ import Layout from "./Layout.jsx";
 import Home from "./Home";
 
 import Realisations from "./Realisations";
+import RealisationDetail from "./RealisationDetail.jsx";
 
 import Blog from "./Blog";
 
@@ -42,6 +43,7 @@ function PagesContent() {
                 <Route path="/" element={<Home />} />
                 <Route path="/Home" element={<Home />} />
                 <Route path="/Realisations" element={<Realisations />} />
+                <Route path="/Realisations/:slug" element={<RealisationDetail />} />
                 <Route path="/Blog" element={<Blog />} />
             </Routes>
         </Layout>
