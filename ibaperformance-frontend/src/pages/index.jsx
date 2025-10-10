@@ -4,7 +4,7 @@ import Home from "./Home";
 
 import Realisations from "./Realisations";
 import RealisationDetail from "./RealisationDetail.jsx";
-
+import ScrollToTop from "../utils/ScrollToTop.jsx";
 import Blog from "./Blog";
 
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
@@ -39,6 +39,7 @@ function PagesContent() {
     
     return (
         <Layout currentPageName={currentPage}>
+            <ScrollToTop/>
             <Routes>            
                 <Route path="/" element={<Home />} />
                 <Route path="/Home" element={<Home />} />

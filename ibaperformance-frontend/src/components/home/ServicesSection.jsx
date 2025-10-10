@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Cpu, Wrench, Trophy, Package } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 const services = [
   {

@@ -14,7 +14,7 @@ export const projects = [
     images: [
       "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1920&q=80",
       "https://images.unsplash.com/photo-1542362567-b07e54358753?w=1920&q=80",
-      "https://images.unsplash.com/photo-1614162692292-7ac56d7f36c7?w=1920&q=80"
+      "https://images.unsplash.com/photo-1614162692292-7ac56d7f36c7?w=1920&q=80",
     ],
     description: "Reprogrammation complète Stage 2 avec downpipe inox haute performance.",
     details: "Optimisation complète de la cartographie moteur avec suppression du catalyseur d'origine et installation d'un downpipe inox 200 cellules. Gains significatifs sur toute la plage de régime avec courbe de puissance parfaitement linéaire.",
@@ -60,15 +60,15 @@ Le client est ravi du résultat et utilise quotidiennement son véhicule sans au
       "Admission haute performance carbone",
       "Cartographie personnalisée sur banc",
       "Optimisation pression turbo",
-      "Suppression limiteur de vitesse"
+      "Suppression limiteur de vitesse",
     ],
     technicalData: {
       vehicle: "BMW M3 F80 Competition",
       year: "2018",
       engine: "S55 3.0L Bi-Turbo",
       transmission: "Boîte automatique DCT 7 rapports",
-      mileage: "45 000 km"
-    }
+      mileage: "45 000 km",
+    },
   },
   {
     id: 2,
@@ -85,7 +85,7 @@ Le client est ravi du résultat et utilise quotidiennement son véhicule sans au
     images: [
       "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920&q=80",
       "https://images.unsplash.com/photo-1614162692292-7ac56d7f36c7?w=1920&q=80",
-      "https://images.unsplash.com/photo-1542362567-b07e54358753?w=1920&q=80"
+      "https://images.unsplash.com/photo-1542362567-b07e54358753?w=1920&q=80",
     ],
     description: "Setup châssis complet + échappement Akrapovic pour utilisation circuit intensive.",
     details: "Transformation complète pour la piste avec optimisation du châssis, freinage racing et échappement titane. Configuration idéale pour les trackdays et compétitions amateur.",
@@ -131,15 +131,15 @@ Chronos sur le circuit de Spa-Francorchamps :
       "Freinage Brembo GT Racing",
       "Allègement -50kg",
       "Barres anti-roulis Adjustable",
-      "Aileron carbone réglable"
+      "Aileron carbone réglable",
     ],
     technicalData: {
       vehicle: "Porsche 911 GT3 991.2",
       year: "2019",
       engine: "4.0L Flat-6 atmosphérique",
       transmission: "Boîte PDK 7 rapports",
-      mileage: "28 000 km"
-    }
+      mileage: "28 000 km",
+    },
   },
   {
     id: 3,
@@ -155,24 +155,24 @@ Chronos sur le circuit de Spa-Francorchamps :
     image: "https://images.unsplash.com/photo-1614162692292-7ac56d7f36c7?w=1920&q=80",
     images: [
       "https://images.unsplash.com/photo-1614162692292-7ac56d7f36c7?w=1920&q=80",
-      "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1920&q=80"
+      "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1920&q=80",
     ],
     description: "Optimisation turbo + admission carbone pour performances extrêmes.",
     details: "Reprogrammation Stage 1 avec optimisation de la pression turbo et installation d'une admission carbone haute performance. Gains impressionnants tout en préservant la fiabilité.",
-    fullDescription: `Projet d'optimisation pour cette Audi RS6 C8, déjà impressionnante d'origine avec ses 600 chevaux. Le client souhaitait franchir le cap des 700 ch tout en conservant l'homologation route et la garantie constructeur.`,
+    fullDescription: "Projet d'optimisation pour cette Audi RS6 C8, déjà impressionnante d'origine avec ses 600 chevaux. Le client souhaitait franchir le cap des 700 ch tout en conservant l'homologation route et la garantie constructeur.",
     specs: [
       "Reprogrammation Stage 1",
       "Admission carbone Eventuri",
       "Intercooler amélioré",
-      "Downpipes sport"
+      "Downpipes sport",
     ],
     technicalData: {
       vehicle: "Audi RS6 Avant C8",
       year: "2021",
       engine: "4.0L V8 Bi-Turbo",
       transmission: "Tiptronic 8 rapports",
-      mileage: "18 000 km"
-    }
+      mileage: "18 000 km",
+    },
   },
   {
     id: 4,
@@ -235,7 +235,7 @@ Tous les systèmes ont été vérifiés et renforcés pour garantir la fiabilit�
       year: "2021",
       engine: "4.0L Bi-Turbo V8",
       transmission: "Boîte automatique 9 rapports",
-      mileage: "32 000 km"
+      mileage: "32 000 km",
     },
   },
   {
@@ -301,7 +301,7 @@ Le client est entièrement satisfait des résultats. Le véhicule est utilisé q
       year: "2017",
       engine: "2.0L TSI",
       transmission: "Boîte manuelle 6 rapports",
-      mileage: "78 000 km"
+      mileage: "78 000 km",
     },
   },
   {
@@ -366,7 +366,7 @@ Entretien programmé tous les 5 000 km. Le client utilise le véhicule pour des 
       year: "2019",
       engine: "3.8L V6 Bi-Turbo",
       transmission: "Boîte automatique 6 rapports",
-      mileage: "24 000 km"
+      mileage: "24 000 km",
     },
   },
   {
@@ -429,7 +429,7 @@ Le client participe régulièrement à des track days et des compétitions avec 
       year: "2022",
       engine: "Moteurs électriques triple",
       transmission: "Boîte simple vitesse",
-      mileage: "18 000 km"
+      mileage: "18 000 km",
     },
   },
   {
@@ -492,7 +492,7 @@ Le client utilise régulièrement son véhicule pour des track days et des comp�
       year: "2020",
       engine: "3.9L V8 Turbo",
       transmission: "Boîte automatique 7 rapports",
-      mileage: "8 000 km"
+      mileage: "8 000 km",
     },
   },
 ];

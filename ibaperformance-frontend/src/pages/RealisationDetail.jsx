@@ -45,10 +45,10 @@ export default function RealisationDetail() {
 
   return (
     <div className=" bg-zinc-950 pt-20">
-      {/* Hero Image Gallery */}
-      
+      {/* Image Gallery */}
+        
 
-      {/* Content */}
+        {/* Content */}
       <section className="py-16 bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-12">
@@ -58,7 +58,7 @@ export default function RealisationDetail() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-              >
+                >
                 {/* Header */}
                 <div className="mb-8">
                   <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -126,8 +126,8 @@ export default function RealisationDetail() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {project.specs.map((spec, index) => (
                       <div
-                        key={index}
-                        className="flex items-center gap-3 bg-zinc-900 border border-zinc-800 rounded-lg p-4"
+                      key={index}
+                      className="flex items-center gap-3 bg-zinc-900 border border-zinc-800 rounded-lg p-4"
                       >
                         <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
                           <Check className="w-5 h-5 text-green-400" />
@@ -147,7 +147,7 @@ export default function RealisationDetail() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="sticky top-24 space-y-6"
-              >
+                >
                 {/* Technical Data */}
                 <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
                   <h3 className="text-lg font-bold text-white mb-4">Caractéristiques techniques</h3>
@@ -200,7 +200,7 @@ export default function RealisationDetail() {
                     <Button 
                       className="w-full bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold"
                       asChild
-                    >
+                      >
                       <a href={createPageUrl("Home") + "#contact"}>
                         Demander un devis
                       </a>
@@ -208,7 +208,7 @@ export default function RealisationDetail() {
                     <Button 
                       variant="outline"
                       className="w-full border-zinc-700 text-white hover:bg-zinc-800"
-                    >
+                      >
                       <Share2 className="w-4 h-4 mr-2" />
                       Partager ce projet
                     </Button>
@@ -220,8 +220,8 @@ export default function RealisationDetail() {
         </div>
       </section>
 
-      {/* Related Projects */}
-      <section className="py-16 bg-zinc-900 border-t border-zinc-800">
+{/* Related Projects */}
+<section className="py-16 bg-zinc-900 border-t border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-white mb-8">Autres réalisations</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -230,10 +230,10 @@ export default function RealisationDetail() {
               .slice(0, 3)
               .map((project,index) => (
                 <ProjectCard
-                    key={project.id}
-                    project={project}
-                    index={index}
-                    onClick={() => setSelectedProject(project)}
+                key={project.id}
+                project={project}
+                index={index}
+                onClick={() => setSelectedProject(project)}
                 />
               ))}
           </div>

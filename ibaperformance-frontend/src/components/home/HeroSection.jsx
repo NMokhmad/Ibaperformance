@@ -1,55 +1,55 @@
-import {Button} from '@/components/ui/button'
-import {motion} from 'framer-motion'
-import {ArrowRight, Gauge, Zap} from 'lucide-react'
-import {useEffect, useMemo, useState} from 'react'
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { ArrowRight, Gauge, Zap } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function HeroSection() {
-  const [scrollY, setScrollY] = useState(0)
+  const [scrollY, setScrollY] = useState(0);
 
   // Throttle scroll handler for better performance
   useEffect(() => {
-    let ticking = false
+    let ticking = false;
 
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setScrollY(window.scrollY)
-          ticking = false
-        })
-        ticking = true
+          setScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
       }
-    }
+    };
 
-    window.addEventListener('scroll', handleScroll, {passive: true})
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Memoize static data
   const stats = useMemo(
     () => [
-      {icon: Gauge, value: '500+', label: 'Véhicules préparés'},
-      {icon: Zap, value: '15 ans', label: "D'expérience"},
+      { icon: Gauge, value: "500+", label: "Véhicules préparés" },
+      { icon: Zap, value: "15 ans", label: "D'expérience" },
     ],
     [],
-  )
+  );
 
   // Memoize parallax transform
-  const parallaxTransform = useMemo(() => `translateY(${scrollY * 0.5}px)`, [scrollY])
+  const parallaxTransform = useMemo(() => `translateY(${scrollY * 0.5}px)`, [scrollY]);
 
   // Animation variants
   const containerVariants = {
-    hidden: {opacity: 0, y: 30},
-    visible: {opacity: 1, y: 0},
-  }
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   const statVariants = {
-    hidden: {opacity: 0, y: 20},
+    hidden: { opacity: 0, y: 20 },
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: {duration: 0.6, delay: 0.2 + i * 0.1},
+      transition: { duration: 0.6, delay: 0.2 + i * 0.1 },
     }),
-  }
+  };
 
   return (
     <section
@@ -60,7 +60,7 @@ export default function HeroSection() {
       {/* Background Image with Parallax */}
       <div
         className="absolute inset-0 z-0 will-change-transform"
-        style={{transform: parallaxTransform}}
+        style={{ transform: parallaxTransform }}
         aria-hidden="true"
       >
         <div className="absolute inset-0 bg-linear-to-b from-zinc-950/90 via-zinc-950/60 to-zinc-950 z-10" />
@@ -80,7 +80,7 @@ export default function HeroSection() {
           style={{
             backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
                              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px',
+            backgroundSize: "50px 50px",
           }}
         />
       </div>
@@ -91,7 +91,7 @@ export default function HeroSection() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          transition={{duration: 0.8}}
+          transition={{ duration: 0.8 }}
         >
           {/* Badge 
           <div className="inline-flex items-center gap-2 bg-zinc-800/50 backdrop-blur-xs px-4 py-2 rounded-full mb-6 border border-zinc-700">
@@ -153,7 +153,7 @@ export default function HeroSection() {
             aria-label="Statistiques du garage"
           >
             {stats.map((stat, index) => {
-              const Icon = stat.icon
+              const Icon = stat.icon;
               return (
                 <motion.div
                   key={stat.label}
@@ -168,7 +168,7 @@ export default function HeroSection() {
                   <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
                   <div className="text-sm text-zinc-400">{stat.label}</div>
                 </motion.div>
-              )
+              );
             })}
           </div>
         </motion.div>
@@ -181,13 +181,12 @@ export default function HeroSection() {
       />
       {/* Scroll Indicator */}
       <div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
-        aria-hidden="true"
-      >
+        className="hidden lg:absolute lg:bottom-8 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:z-20 lg:flex"
+        aria-hidden="true">
         <div className="w-6 h-10 border-2 border-zinc-500 rounded-full flex items-start justify-center p-1">
           <div className="w-2 h-2 bg-zinc-500 rounded-full animate-bounce" />
         </div>
       </div>
     </section>
-  )
+  );
 }
