@@ -205,13 +205,6 @@ export default function RealisationDetail() {
                         Demander un devis
                       </a>
                     </Button>
-                    <Button 
-                      variant="outline"
-                      className="w-full border-zinc-700 text-white hover:bg-zinc-800"
-                      >
-                      <Share2 className="w-4 h-4 mr-2" />
-                      Partager ce projet
-                    </Button>
                   </div>
                 </div>
               </motion.div>

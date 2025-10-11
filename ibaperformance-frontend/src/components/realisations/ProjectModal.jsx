@@ -47,6 +47,8 @@ export default function ProjectModal({ project, onClose }) {
             <img
               src={project.images[currentImageIndex]}
               alt={project.title}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
             />
             

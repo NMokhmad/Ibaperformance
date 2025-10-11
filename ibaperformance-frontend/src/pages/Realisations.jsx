@@ -148,8 +148,9 @@ export default function RealisationsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                size="lg"
-                className="bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 shadow-xl"
+                size="default"
+                variant="default"
+                className=""
                 asChild
               >
                 <a href="/#contact">
@@ -158,9 +159,9 @@ export default function RealisationsPage() {
                 </a>
               </Button>
               <Button
-                size="lg"
-                variant="outline"
-                className="bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 shadow-xl"
+                size="default"
+                variant="default"
+                className=""
                 asChild
               >
                 <a href="/">

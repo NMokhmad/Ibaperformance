@@ -6,6 +6,7 @@ import Realisations from "./Realisations";
 import RealisationDetail from "./RealisationDetail.jsx";
 import ScrollToTop from "../utils/ScrollToTop.jsx";
 import Blog from "./Blog";
+import BlogDetail from "./BlogDetail.jsx";
 
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 
@@ -16,6 +17,8 @@ const PAGES = {
     Realisations: Realisations,
     
     Blog: Blog,
+
+    BlogDetail: BlogDetail,
     
 };
 
@@ -40,12 +43,12 @@ function PagesContent() {
     return (
         <Layout currentPageName={currentPage}>
             <ScrollToTop/>
-            <Routes>            
-                <Route path="/" element={<Home />} />
-                <Route path="/Home" element={<Home />} />
+            <Routes>
+                <Route path="/" element={<Home />} />            
                 <Route path="/Realisations" element={<Realisations />} />
                 <Route path="/Realisations/:slug" element={<RealisationDetail />} />
                 <Route path="/Blog" element={<Blog />} />
+                <Route path="/Blog/:slug" element={<BlogDetail />} />
             </Routes>
         </Layout>
     );

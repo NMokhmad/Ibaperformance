@@ -49,6 +49,7 @@ export default function ShowcaseSection() {
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
@@ -90,8 +91,9 @@ export default function ShowcaseSection() {
             className="flex justify-center"
             >
             <Button
-              size="lg"
-              className="bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 py-6 shadow-2xl shadow-zinc-700/50 hover:shadow-zinc-500/50 transition-all duration-300 group"
+              size="default"
+              variant="default"
+              className=""
               asChild
               >
               <a href="/realisations">

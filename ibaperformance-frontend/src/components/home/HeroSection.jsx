@@ -1,4 +1,5 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "../ui/button";
+
 import { motion } from "framer-motion";
 import { ArrowRight, Gauge, Zap } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
@@ -68,7 +69,7 @@ export default function HeroSection() {
           src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=80"
           alt=""
           className="w-full h-full object-cover"
-          loading="eager"
+          loading="lazy"
           decoding="async"
         />
       </div>
@@ -118,8 +119,9 @@ export default function HeroSection() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <Button
-              size="lg"
-              className="bg-linear-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 py-6 shadow-2xl shadow-zinc-700/50 hover:shadow-zinc-500/50 transition-all duration-300 group"
+              size="default"
+              variant="default"
+              className=""
               asChild
             >
               <a href="#realisations">
@@ -132,18 +134,20 @@ export default function HeroSection() {
             </Button>
 
             <Button
-              size="lg"
-              className="bg-linear-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg px-8 py-6 shadow-2xl shadow-zinc-700/50 hover:shadow-zinc-500/50 transition-all duration-300 group"
+              size="default"
+              variant="default"
+              className=""
               asChild
             >
               <a href="#services">
-                Découvrir mes services
+                Voir mes services
                 <ArrowRight
                   className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
                   aria-hidden="true"
                 />
               </a>
             </Button>
+            
           </div>
 
           {/* Stats */}
@@ -172,6 +176,13 @@ export default function HeroSection() {
             })}
           </div>
         </motion.div>
+        <div
+          className="hidden lg:absolute lg:bottom-8 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:z-20 lg:flex"
+          aria-hidden="true">
+          <div className="w-6 h-10 border-2 border-zinc-500 rounded-full flex items-start justify-center p-1">
+            <div className="w-2 h-2 bg-zinc-500 rounded-full animate-bounce" />
+          </div>
+        </div>
       </div>
 
       {/* Bottom Gradient */}
@@ -180,13 +191,6 @@ export default function HeroSection() {
         aria-hidden="true"
       />
       {/* Scroll Indicator */}
-      <div
-        className="hidden lg:absolute lg:bottom-8 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:z-20 lg:flex"
-        aria-hidden="true">
-        <div className="w-6 h-10 border-2 border-zinc-500 rounded-full flex items-start justify-center p-1">
-          <div className="w-2 h-2 bg-zinc-500 rounded-full animate-bounce" />
-        </div>
-      </div>
     </section>
   );
 }

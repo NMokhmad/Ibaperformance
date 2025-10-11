@@ -1,28 +1,6 @@
 import { motion } from "framer-motion";
-import { Award, Users, Heart, Target } from "lucide-react";
-
-const values = [
-  {
-    icon: Target,
-    title: "Passion",
-    description: "L'automobile est notre passion. Chaque projet est traité avec le plus grand soin et l'attention aux détails.",
-  },
-  {
-    icon: Award,
-    title: "Qualité",
-    description: "Nous utilisons uniquement des pièces de qualité et des équipements de diagnostic professionnels.",
-  },
-  {
-    icon: Heart,
-    title: "Rigueur",
-    description: "Méthodologie rigoureuse et respect des normes pour garantir fiabilité et performances durables.",
-  },
-  {
-    icon: Users,
-    title: "Expertise",
-    description: "Une équipe de techniciens spécialisés et formés aux dernières technologies automobiles.",
-  },
-];
+// import { Award, Users, Heart, Target } from "lucide-react";
+// import { values } from "../../data/values";
 
 export default function AboutSection() {
   return (
@@ -87,6 +65,7 @@ export default function AboutSection() {
               <img
                 src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80"
                 alt="Atelier IbaPerformance"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-linear-to-t from-zinc-950/50 to-transparent" />

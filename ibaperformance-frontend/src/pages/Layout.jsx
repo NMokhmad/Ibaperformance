@@ -6,12 +6,12 @@ import { Menu, X, Phone, Mail } from "lucide-react";
 import logo from "/assets/Favorite 2.jpg";
 
 const navigationItems = [
-  { title: "Accueil", url: createPageUrl("Home"), section: "hero" },
-  { title: "Services", url: createPageUrl("Home") + "#services", section: "services" },
-  { title: "Réalisations", url: createPageUrl("Home")+ "#realisations" , section: "realisations" },
+  { title: "Accueil", url: createPageUrl("") + "#hero", section: "hero" },
+  { title: "Services", url: createPageUrl("") + "#services", section: "services" },
+  { title: "Réalisations", url: createPageUrl("")+ "#realisations" , section: "realisations" },
   { title: "Blog", url: createPageUrl("Blog"), section: "blog" }, // Added Blog page
-  { title: "À propos", url: createPageUrl("Home") + "#apropos", section: "apropos" },
-  { title: "Contact", url: createPageUrl("Home") + "#contact", section: "contact" },
+  { title: "À propos", url: createPageUrl("") + "#apropos", section: "apropos" },
+  { title: "Contact", url: createPageUrl("") + "#contact", section: "contact" },
 ];
 
 export default function Layout({ children, currentPageName }) {
