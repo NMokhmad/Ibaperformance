@@ -1,37 +1,119 @@
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, AlertCircle } from "lucide-react";
+import { client } from "../../lib/sanity";
+import emailjs from '@emailjs/browser';
 
 export default function ContactSection() {
-  const contactInfo = [
+  const [settings, setSettings] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [formStatus, setFormStatus] = useState({ type: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef();
+
+  // Fetch settings depuis Sanity
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        setLoading(true);
+        const query = `*[_type == "settings"][0] {
+          nomGarage,
+          telephone,
+          email,
+          adresse,
+          horaires,
+          instagram,
+          mapUrl
+        }`;
+
+        const data = await client.fetch(query);
+        setSettings(data);
+        setLoading(false);
+      } catch (err) {
+        console.error("Erreur Sanity:", err);
+        setError("Erreur lors du chargement des informations");
+        setLoading(false);
+      }
+    };
+
+    fetchSettings();
+  }, []);
+
+  // Gestion de l'envoi du formulaire
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setFormStatus({ type: '', message: '' });
+
+    try {
+      // Remplace ces valeurs par tes IDs EmailJS
+      const result = await emailjs.sendForm(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      formRef.current,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    );
+
+      console.log('Email envoyé:', result.text);
+      setFormStatus({
+        type: 'success',
+        message: 'Merci ! Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.'
+      });
+      
+      // Réinitialise le formulaire
+      formRef.current.reset();
+    } catch (error) {
+      console.error('Erreur EmailJS:', error);
+      setFormStatus({
+        type: 'error',
+        message: 'Une erreur est survenue. Veuillez réessayer ou nous contacter directement par téléphone.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const contactInfo = settings ? [
     {
       icon: Phone,
       title: "Téléphone",
-      value: "+33 1 23 45 67 89",
-      link: "tel:+33123456789",
+      value: settings.telephone || "+33 1 23 45 67 89",
+      link: `tel:${settings.telephone?.replace(/\s/g, '')}`,
     },
     {
       icon: Mail,
       title: "Email",
-      value: "contact@ibaperformance.fr",
-      link: "mailto:contact@ibaperformance.fr",
+      value: settings.email || "contact@ibaperformance.fr",
+      link: `mailto:${settings.email}`,
     },
     {
       icon: MapPin,
       title: "Adresse",
-      value: "123 Avenue de la Performance, 75001 Paris",
+      value: settings.adresse || "Paris, France",
       link: "#",
     },
     {
       icon: Clock,
       title: "Horaires",
-      value: "Lun - Ven: 9h - 18h / Sam: 9h - 12h",
+      value: settings.horaires || "Lun - Ven: 9h - 18h",
       link: "#",
     },
-  ];
+  ] : [];
+
+  if (loading) {
+    return (
+      <section id="contact" className="relative py-24 bg-zinc-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-zinc-400">Chargement...</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="contact" className="relative py-24 bg-zinc-950">
@@ -82,7 +164,9 @@ export default function ContactSection() {
                     </div>
                     <div>
                       <div className="text-sm text-zinc-500 mb-1">{info.title}</div>
-                      <div className="text-sm font-medium text-white">{info.value}</div>
+                      <div className="text-sm font-medium text-white whitespace-pre-line">
+                        {info.value}
+                      </div>
                     </div>
                   </div>
                 </motion.a>
@@ -98,7 +182,7 @@ export default function ContactSection() {
               className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden h-96"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.3514616!3d48.8566969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b005%3A0x40b82c3688c9460!2sParis!5e0!3m2!1sen!2sfr!4v1234567890123"
+                src={settings?.mapUrl || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.3514616!3d48.8566969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b005%3A0x40b82c3688c9460!2sParis!5e0!3m2!1sen!2sfr!4v1234567890123"}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -116,12 +200,38 @@ export default function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <form className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 space-y-6">
+            <form 
+              ref={formRef}
+              onSubmit={handleSubmit}
+              className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 space-y-6"
+            >
+              {/* Message de statut */}
+              {formStatus.message && (
+                <div className={`p-4 rounded-lg flex items-start gap-3 ${
+                  formStatus.type === 'success' 
+                    ? 'bg-green-900/20 border border-green-800' 
+                    : 'bg-red-900/20 border border-red-800'
+                }`}>
+                  {formStatus.type === 'success' ? (
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                  ) : (
+                    <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                  )}
+                  <p className={`text-sm ${
+                    formStatus.type === 'success' ? 'text-green-300' : 'text-red-300'
+                  }`}>
+                    {formStatus.message}
+                  </p>
+                </div>
+              )}
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="text-zinc-300">Nom complet *</Label>
+                  <Label htmlFor="from_name" className="text-zinc-300">Nom complet *</Label>
                   <Input
-                    id="name"
+                    id="from_name"
+                    name="from_name"
+                    required
                     className="bg-zinc-800 border-zinc-700 text-white focus:border-zinc-600"
                     placeholder="Jean Dupont"
                   />
@@ -131,7 +241,9 @@ export default function ContactSection() {
                   <Label htmlFor="phone" className="text-zinc-300">Téléphone *</Label>
                   <Input
                     id="phone"
+                    name="phone"
                     type="tel"
+                    required
                     className="bg-zinc-800 border-zinc-700 text-white focus:border-zinc-600"
                     placeholder="+33 6 12 34 56 78"
                   />
@@ -139,36 +251,23 @@ export default function ContactSection() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-zinc-300">Email *</Label>
+                <Label htmlFor="from_email" className="text-zinc-300">Email *</Label>
                 <Input
-                  id="email"
+                  id="from_email"
+                  name="from_email"
                   type="email"
+                  required
                   className="bg-zinc-800 border-zinc-700 text-white focus:border-zinc-600"
                   placeholder="jean.dupont@email.com"
                 />
               </div>
-
-                {/* motif de la demande (fonctionnalités a ajouter plus tard) */}
-              {/*<div className="space-y-2">
-                <Label htmlFor="service" className="text-zinc-300">Service souhaité *</Label>
-                <Select>
-                  <SelectTrigger className="bg-zinc-800 border-zinc-700 text-white focus:border-zinc-600">
-                    <SelectValue placeholder="Sélectionnez un service" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-zinc-800 border-zinc-700">
-                    <SelectItem value="reprogrammation">Reprogrammation moteur / ECU</SelectItem>
-                    <SelectItem value="entretien">Entretien hautes performances</SelectItem>
-                    <SelectItem value="circuit">Préparation circuit</SelectItem>
-                    <SelectItem value="pieces">Installation pièces racing</SelectItem>
-                    <SelectItem value="autre">Autre / Projet sur mesure</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>*/}
               
               <div className="space-y-2">
                 <Label htmlFor="message" className="text-zinc-300">Votre message *</Label>
                 <Textarea
                   id="message"
+                  name="message"
+                  required
                   className="bg-zinc-800 border-zinc-700 text-white focus:border-zinc-600 min-h-32"
                   placeholder="Décrivez-nous votre projet, votre véhicule et vos objectifs de performance..."
                 />
@@ -176,16 +275,18 @@ export default function ContactSection() {
 
               <Button
                 type="submit"
-                className="w-full bg-linear-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg py-6 shadow-xl group"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg py-6 shadow-xl group disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Envoyer ma demande
-                <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                {isSubmitting ? (
+                  <>Envoi en cours...</>
+                ) : (
+                  <>
+                    Envoyer ma demande
+                    <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
               </Button>
-              {/* Consent Text 
-              <p className="text-xs text-zinc-500 text-center">
-                En soumettant ce formulaire, vous acceptez d'être recontacté par notre équipe.
-              </p>
-                */}
             </form>
           </motion.div>
         </div>

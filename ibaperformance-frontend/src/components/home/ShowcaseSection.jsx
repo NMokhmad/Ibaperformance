@@ -18,7 +18,7 @@ export default function ShowcaseSection() {
       // Log 1 : Vérifier que le client existe
       console.log("Client Sanity:", client);
       
-      const query = `*[_type == "realisation"] | order(date desc)[0...6] {
+      const query = `*[_type == "realisations"] | order(date desc)[0...6] {
         _id,
         titre,
         slug,

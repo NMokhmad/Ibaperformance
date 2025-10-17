@@ -14,6 +14,7 @@
     "deps:clean": "npx depcheck --json | node scripts/clean-deps.js"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@portabletext/react": "^4.0.3",
     "@radix-ui/react-accordion": "^1.2.3",
     "@radix-ui/react-alert-dialog": "^1.1.6",
