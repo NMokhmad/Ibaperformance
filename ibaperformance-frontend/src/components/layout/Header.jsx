@@ -2,7 +2,7 @@ import { memo, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Navigation } from "./Navigation";
 import { MobileMenu } from "./MobileMenu";
-import logo from "/assets/Favorite 2.jpg";
+import logo from "/assets/Favorite-2.webp";
 
 export const Header = memo(function Header({ scrolled }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

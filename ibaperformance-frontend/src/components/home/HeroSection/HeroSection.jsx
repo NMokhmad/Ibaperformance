@@ -36,7 +36,7 @@ export const HeroSection = memo(function HeroSection() {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/90 via-zinc-950/60 to-zinc-950 z-10" />
         <img
-          src="/mockup/Favorite4.jpg"
+          src="/assets/Favorite4.webp"
           alt=""
           className="w-full h-full object-cover"
           loading="eager"
