@@ -1,0 +1,25 @@
+# robots.txt pour IBA Performance
+# https://ibaperformance.vercel.app/robots.txt
+
+# Autoriser tous les robots d'exploration
+User-agent: *
+Allow: /
+
+# Ne pas indexer les assets et fichiers techniques
+Disallow: /assets/
+Disallow: /*.json$
+Disallow: /*.map$
+
+# Éviter les duplications
+Disallow: /*?*
+
+# Autoriser spécifiquement les pages importantes
+Allow: /$
+Allow: /realisations
+Allow: /blog
+
+# Sitemap
+Sitemap: https://ibaperformance.vercel.app/sitemap.xml
+
+# Temps de crawl (optionnel)
+Crawl-delay: 1
