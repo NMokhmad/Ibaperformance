@@ -1,7 +1,6 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { createPageUrl } from "../../utils/index.ts";
 
 export const RealisationDetailSidebar = memo(function RealisationDetailSidebar({ project }) {
   return (
@@ -67,7 +66,7 @@ export const RealisationDetailSidebar = memo(function RealisationDetailSidebar({
               className="w-full bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold"
               asChild
             >
-              <a href={createPageUrl("Home") + "#contact"}>
+              <a href="/#contact">
                 Demander un devis
               </a>
             </Button>

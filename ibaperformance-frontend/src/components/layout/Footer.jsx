@@ -2,7 +2,7 @@ import { memo } from "react";
 import { FooterLinks } from "./FooterLinks";
 import { FooterContact } from "./FooterContact";
 import { footerLinks } from "../../constants/navigation";
-import logo from "/assets/Favorite-2.webp";
+import logo from "/assets/Favorite-2-removebg-preview.webp";
 
 export const Footer = memo(function Footer({ settings }) {
   return (

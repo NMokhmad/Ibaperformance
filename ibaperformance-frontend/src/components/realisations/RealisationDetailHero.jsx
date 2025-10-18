@@ -2,6 +2,7 @@ import { memo } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { urlFor } from "../../lib/sanity";
+import { Calendar } from "lucide-react";
 
 export const RealisationDetailHero = memo(function RealisationDetailHero({ 
   project, 
@@ -20,6 +21,18 @@ export const RealisationDetailHero = memo(function RealisationDetailHero({
             className="w-full h-full object-cover transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent" />
+
+          {/* Bouton retour en overlay - top left */}
+          <div className="absolute top-6 left-6 z-20">
+            <Button
+              variant="outline"
+              className="bg-zinc-900/80 backdrop-blur-sm border-zinc-700 text-white hover:bg-zinc-800"
+              onClick={onBack}
+            >
+              <ChevronLeft className="w-4 h-4 mr-2" />
+              Retour aux réalisations
+            </Button>
+          </div>
 
           {project.images.length > 1 && (
             <>
@@ -44,42 +57,45 @@ export const RealisationDetailHero = memo(function RealisationDetailHero({
               </div>
             </>
           )}
+        </div>
 
-          <div className="absolute top-6 left-6 z-20">
-            <Button
-              variant="outline"
-              className="bg-zinc-900/80 backdrop-blur-sm border-zinc-700 text-white hover:bg-zinc-800"
-              onClick={onBack}
-            >
-              <ChevronLeft className="w-4 h-4 mr-2" />
-              Retour aux réalisations
-            </Button>
+        {/* Header sous l'image */}
+        <div className="mt-8">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            {project.titre}
+          </h1>
+          <p className="text-xl text-zinc-400 mb-6">{project.description}</p>
+          
+          <div className="flex items-center gap-4 text-sm text-zinc-500">
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4" />
+              <span>{project.date}</span>
+            </div>
           </div>
         </div>
 
+        {/* Thumbnails */}
         {project.images.length > 1 && (
-          <div className="bg-zinc-900/50 backdrop-blur-sm border-t border-zinc-800 px-4 py-4 mt-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                {project.images.map((image, index) => (
-                  <button
-                    key={index}
-                    onClick={() => onNext()}
-                    className={`flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
-                      currentImageIndex === index
-                        ? 'border-zinc-100 ring-2 ring-zinc-100/30 shadow-lg'
-                        : 'border-zinc-700 hover:border-zinc-500'
-                    }`}
-                    aria-label={`Go to image ${index + 1}`}
-                  >
-                    <img
-                      src={urlFor(image).url()}
-                      alt={`Thumbnail ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
-                ))}
-              </div>
+          <div className="bg-zinc-900/50 backdrop-blur-sm border-t border-zinc-800 px-4 py-4 mt-4 rounded-lg">
+            <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+              {project.images.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => onNext()}
+                  className={`flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                    currentImageIndex === index
+                      ? 'border-zinc-100 ring-2 ring-zinc-100/30 shadow-lg'
+                      : 'border-zinc-700 hover:border-zinc-500'
+                  }`}
+                  aria-label={`Go to image ${index + 1}`}
+                >
+                  <img
+                    src={urlFor(image).url()}
+                    alt={`Thumbnail ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
             </div>
           </div>
         )}

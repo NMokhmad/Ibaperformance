@@ -10,20 +10,7 @@ export const RealisationDetailContent = memo(function RealisationDetailContent({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            {project.titre}
-          </h1>
-          <p className="text-xl text-zinc-400 mb-6">{project.description}</p>
-          
-          <div className="flex items-center gap-4 text-sm text-zinc-500">
-            <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4" />
-              <span>{project.date}</span>
-            </div>
-          </div>
-        </div>
+        
 
         {/* Performance Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
