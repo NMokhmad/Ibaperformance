@@ -7,6 +7,9 @@ import { BlogDetailHero } from "./blogDetail/BlogDetailHero";
 import { BlogArticleHeader } from "./blogDetail/BlogArticleHeader";
 import { BlogArticleContent } from "./blogDetail/BlogArticleContent";
 import { RelatedArticles } from "./blogDetail/RelatedArticles";
+import { SEO } from "./seo/SEO";
+import { generateArticleSEO } from "../config/seo.config";
+
 
 export default function BlogDetail() {
   const { slug } = useParams();
@@ -38,33 +41,40 @@ export default function BlogDetail() {
     );
   }
 
+  const seoData = generateArticleSEO(article, slug);
+
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
-      <BlogDetailHero
-        article={article}
-        currentImageIndex={currentIndex}
-        onNext={next}
-        onPrevious={previous}
-        onBack={() => navigate("/blog")}
-      />
+    <>
 
-      <section className="py-16 bg-zinc-950">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.article
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <BlogArticleHeader article={article} />
-            <BlogArticleContent content={article.content} />
-          </motion.article>
-        </div>
-      </section>
+      <SEO {...seoData} />
 
-      <RelatedArticles
-        articles={relatedArticles}
-        onArticleClick={(slug) => navigate(`/blog/${slug}`)}
-      />
-    </div>
+      <div className="min-h-screen bg-zinc-950 pt-20">
+        <BlogDetailHero
+          article={article}
+          currentImageIndex={currentIndex}
+          onNext={next}
+          onPrevious={previous}
+          onBack={() => navigate("/blog")}
+          />
+
+        <section className="py-16 bg-zinc-950">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.article
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              >
+              <BlogArticleHeader article={article} />
+              <BlogArticleContent content={article.content} />
+            </motion.article>
+          </div>
+        </section>
+
+        <RelatedArticles
+          articles={relatedArticles}
+          onArticleClick={(slug) => navigate(`/blog/${slug}`)}
+          />
+      </div>
+    </>
   );
 }

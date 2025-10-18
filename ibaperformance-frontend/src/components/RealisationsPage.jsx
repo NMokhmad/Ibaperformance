@@ -8,6 +8,9 @@ import { RealisationsFilters } from "./realisations/RealisationsFilters";
 import { RealisationsGrid } from "./realisations/RealisationsGrid";
 import { RealisationsCTA } from "./realisations/RealisationsCTA";
 
+import { SEO } from "./seo/SEO";
+import { seoConfig } from "../config/seo.config";
+
 export default function RealisationsPage() {
   const { projects, categories, loading, error, refetch } = useRealisations();
   const {
@@ -36,24 +39,28 @@ export default function RealisationsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
-      <RealisationsHero 
-        projectsCount={projects.length} 
-        totalPower={totalPower} 
-      />
+    <>
+    <SEO {...seoConfig.pages.realisations} />
+    
+        <div className="min-h-screen bg-zinc-950 pt-20">
+        <RealisationsHero 
+            projectsCount={projects.length} 
+            totalPower={totalPower} 
+            />
 
-      <RealisationsFilters
-        categories={categories}
-        selectedCategory={selectedCategory}
-        onCategoryChange={handleCategoryChange}
-      />
+        <RealisationsFilters
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onCategoryChange={handleCategoryChange}
+            />
 
-      <RealisationsGrid
-        projects={filteredProjects}
-        onProjectClick={handleProjectClick}
-      />
+        <RealisationsGrid
+            projects={filteredProjects}
+            onProjectClick={handleProjectClick}
+            />
 
-      <RealisationsCTA />
-    </div>
+        <RealisationsCTA />
+        </div>
+    </>
   );
 }

@@ -8,6 +8,9 @@ import { BlogFeaturedArticle } from "./blog/BlogFeaturedArticle";
 import { BlogFilters } from "./blog/BlogFilters";
 import { BlogArticlesGrid } from "./blog/BlogArticlesGrid";
 
+import { SEO } from "./seo/SEO";
+import { seoConfig } from "../config/seo.config";
+
 export default function BlogPage() {
   const { articles, categories, loading, error, refetch } = useBlogArticles();
   const {
@@ -47,24 +50,28 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
-      <BlogHero 
-        searchQuery={searchQuery} 
-        onSearchChange={handleSearchChange} 
-      />
+    <>
+      <SEO {...seoConfig.pages.blog} />
 
-      <BlogFeaturedArticle article={featuredArticle} />
+      <div className="min-h-screen bg-zinc-950 pt-20">
+        <BlogHero 
+          searchQuery={searchQuery} 
+          onSearchChange={handleSearchChange} 
+          />
 
-      <BlogFilters
-        categories={categories}
-        selectedCategory={selectedCategory}
-        onCategoryChange={handleCategoryChange}
-      />
+        <BlogFeaturedArticle article={featuredArticle} />
 
-      <BlogArticlesGrid
-        articles={remainingArticles}
-        onArticleClick={handleArticleClick}
-      />
-    </div>
+        <BlogFilters
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onCategoryChange={handleCategoryChange}
+          />
+
+        <BlogArticlesGrid
+          articles={remainingArticles}
+          onArticleClick={handleArticleClick}
+          />
+      </div>
+    </>
   );
 }

@@ -9,6 +9,8 @@ import { RealisationDetailContent } from "./realisations/RealisationDetailConten
 import { RealisationDetailSidebar } from "./realisations/RealisationDetailSidebar.jsx";
 import { RelatedProjects } from "./realisations/RelatedProjects.jsx";
 import { createPageUrl } from "../utils/index.ts";
+import { SEO } from "./seo/SEO.jsx"
+import { generateRealisationSEO } from "../config/seo.config";
 
 export default function RealisationDetail() {
   const { slug } = useParams();
@@ -48,29 +50,35 @@ export default function RealisationDetail() {
     );
   }
 
+  const seoData = generateRealisationSEO(project, slug);
+
   return (
-    <div className="bg-zinc-950 pt-20">
-      <RealisationDetailHero
-        project={project}
-        currentImageIndex={currentIndex}
-        onNext={next}
-        onPrevious={previous}
-        onBack={() => navigate(createPageUrl("Realisations"))}
-      />
+    <>
+      <SEO {...seoData} />
 
-      <section className="py-16 bg-zinc-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-12">
-            <RealisationDetailContent project={project} />
-            <RealisationDetailSidebar project={project} />
+      <div className="bg-zinc-950 pt-20">
+        <RealisationDetailHero
+          project={project}
+          currentImageIndex={currentIndex}
+          onNext={next}
+          onPrevious={previous}
+          onBack={() => navigate(createPageUrl("Realisations"))}
+          />
+
+        <section className="py-16 bg-zinc-950">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-3 gap-12">
+              <RealisationDetailContent project={project} />
+              <RealisationDetailSidebar project={project} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <RelatedProjects 
-        projects={relatedProjects} 
-        currentProjectId={project._id} 
-      />
-    </div>
+        <RelatedProjects 
+          projects={relatedProjects} 
+          currentProjectId={project._id} 
+          />
+      </div>
+    </>
   );
 }

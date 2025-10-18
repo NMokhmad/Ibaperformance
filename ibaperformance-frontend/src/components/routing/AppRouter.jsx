@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from "react-route
 import Layout from "../Layout";
 import ScrollToTop from "../../utils/ScrollToTop";
 import { routes, PAGES } from "./routes.config";
+import { SettingsProvider } from "../../contexts/SettingsContext"; // AJOUT
 
 function getCurrentPage(url) {
   if (url.endsWith("/")) {
@@ -43,7 +44,9 @@ function AppContent() {
 export default function AppRouter() {
   return (
     <Router>
-      <AppContent />
+      <SettingsProvider> {/* AJOUT : Enveloppe tout dans le Provider */}
+        <AppContent />
+      </SettingsProvider>
     </Router>
   );
 }
