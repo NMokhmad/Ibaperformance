@@ -5,6 +5,8 @@ import { ServicesSection } from "./home/ServicesSection/ServicesSection";
 import { ShowcaseSection } from "./home/ShowcaseSection/ShowcaseSection";
 import { AboutSection } from "./home/AboutSection/AboutSection";
 import { ContactSection } from "./home/ContactSection/ContactSection";
+import { BlogCTA } from "./home/Blog/BlogCTA"
+// import { BlogPreview } from "./home/Blog/BlogPreview";
 
 const Home = memo(function Home() {
   return (
@@ -20,6 +22,7 @@ const Home = memo(function Home() {
       <ServicesSection />
       <ShowcaseSection />
       <AboutSection />
+      <BlogCTA />
       <ContactSection />
     </>
   );

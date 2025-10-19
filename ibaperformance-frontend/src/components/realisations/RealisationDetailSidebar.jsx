@@ -59,7 +59,7 @@ export const RealisationDetailSidebar = memo(function RealisationDetailSidebar({
             Un projet similaire ?
           </h3>
           <p className="text-sm text-zinc-400 mb-6">
-            Contactez-nous pour discuter de votre projet et obtenir un devis personnalisé.
+            Contactez-nous pour discuter de votre projet {/*et obtenir un devis personnalisé.*/}
           </p>
           <div className="space-y-3">
             <Button 
@@ -67,7 +67,7 @@ export const RealisationDetailSidebar = memo(function RealisationDetailSidebar({
               asChild
             >
               <a href="/#contact">
-                Demander un devis
+                Contacter-moi
               </a>
             </Button>
           </div>
