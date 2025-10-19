@@ -54,7 +54,7 @@ export function BlogArticleContent({ content }) {
       <div className="pt-8 border-t border-zinc-800">
         <div className="flex flex-col sm:flex-row gap-4">
           <Button
-            className="flex-1 bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg py-6"
+            className="flex-1 bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg py-2"
             asChild
           >
             <a href="/#contact">
