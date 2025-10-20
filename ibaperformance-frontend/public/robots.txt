@@ -1,5 +1,5 @@
 # robots.txt pour IBA Performance
-# https://ibaperformance.vercel.app/robots.txt
+# https://ibaperformance.com/robots.txt
 
 # Autoriser tous les robots d'exploration
 User-agent: *
@@ -19,7 +19,7 @@ Allow: /realisations
 Allow: /blog
 
 # Sitemap
-Sitemap: https://ibaperformance.vercel.app/sitemap.xml
+Sitemap: https://ibaperformance.com/sitemap.xml
 
 # Temps de crawl (optionnel)
 Crawl-delay: 1
