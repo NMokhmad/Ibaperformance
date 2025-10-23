@@ -4,7 +4,7 @@ import { Navigation } from "./Navigation";
 import { MobileMenu } from "./MobileMenu";
 import logo from "/assets/Favorite-2-removebg-preview.webp";
 
-export const Header = memo(function Header({ scrolled }) {
+export const Header = memo(({ scrolled }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (

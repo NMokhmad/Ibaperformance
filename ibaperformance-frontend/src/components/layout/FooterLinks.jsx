@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { navigationItems } from "../../constants/navigation";
 
-export const FooterLinks = memo(function FooterLinks() {
+export const FooterLinks = memo(() => {
   return (
     <div>
       <h4 className="text-sm font-semibold mb-4 text-zinc-200">Liens rapides</h4>

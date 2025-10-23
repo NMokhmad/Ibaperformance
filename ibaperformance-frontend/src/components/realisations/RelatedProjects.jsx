@@ -2,10 +2,10 @@ import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 
-export const RelatedProjects = memo(function RelatedProjects({ 
+export const RelatedProjects = memo(({ 
   projects, 
-  currentProjectId 
-}) {
+  currentProjectId, 
+}) => {
   const navigate = useNavigate();
 
   const filteredProjects = projects

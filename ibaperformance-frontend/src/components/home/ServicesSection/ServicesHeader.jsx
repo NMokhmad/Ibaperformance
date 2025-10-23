@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 
-export const ServicesHeader = memo(function ServicesHeader() {
+export const ServicesHeader = memo(() => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

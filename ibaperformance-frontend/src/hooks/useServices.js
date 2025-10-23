@@ -6,7 +6,7 @@ import {
   Wind, 
   Target, 
   Settings, 
-  AlertCircle 
+  AlertCircle, 
 } from "lucide-react";
 
 const iconMap = {

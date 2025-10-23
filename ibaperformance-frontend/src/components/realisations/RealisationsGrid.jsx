@@ -1,7 +1,7 @@
 import { memo } from "react";
 import ProjectCard from "./ProjectCard";
 
-const EmptyState = memo(function EmptyState() {
+const EmptyState = memo(() => {
   return (
     <div className="text-center py-16">
       <p className="text-zinc-500 text-lg">
@@ -11,10 +11,10 @@ const EmptyState = memo(function EmptyState() {
   );
 });
 
-export const RealisationsGrid = memo(function RealisationsGrid({ 
+export const RealisationsGrid = memo(({ 
   projects, 
-  onProjectClick 
-}) {
+  onProjectClick, 
+}) => {
   if (projects.length === 0) {
     return (
       <section className="py-16 bg-zinc-950">

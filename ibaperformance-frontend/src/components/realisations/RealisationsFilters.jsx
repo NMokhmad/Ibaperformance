@@ -2,11 +2,11 @@ import { memo } from "react";
 import { Filter } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export const RealisationsFilters = memo(function RealisationsFilters({ 
+export const RealisationsFilters = memo(({ 
   categories, 
   selectedCategory, 
-  onCategoryChange 
-}) {
+  onCategoryChange, 
+}) => {
   return (
     <section className="relative py-8 bg-zinc-900 border-y border-zinc-800 sticky top-20 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

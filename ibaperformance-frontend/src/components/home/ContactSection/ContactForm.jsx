@@ -4,38 +4,38 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 
-export const ContactForm = memo(function ContactForm() {
-  const [formStatus, setFormStatus] = useState({ type: '', message: '' });
+export const ContactForm = memo(() => {
+  const [formStatus, setFormStatus] = useState({ type: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setFormStatus({ type: '', message: '' });
+    setFormStatus({ type: "", message: "" });
 
     try {
       const result = await emailjs.sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
 
-      console.log('Email envoyé:', result.text);
+      console.log("Email envoyé:", result.text);
       setFormStatus({
-        type: 'success',
-        message: 'Merci ! Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.'
+        type: "success",
+        message: "Merci ! Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.",
       });
       
       formRef.current.reset();
     } catch (error) {
-      console.error('Erreur EmailJS:', error);
+      console.error("Erreur EmailJS:", error);
       setFormStatus({
-        type: 'error',
-        message: 'Une erreur est survenue. Veuillez réessayer ou nous contacter directement par téléphone.'
+        type: "error",
+        message: "Une erreur est survenue. Veuillez réessayer ou nous contacter directement par téléphone.",
       });
     } finally {
       setIsSubmitting(false);
@@ -51,17 +51,17 @@ export const ContactForm = memo(function ContactForm() {
       {/* Message de statut */}
       {formStatus.message && (
         <div className={`p-4 rounded-lg flex items-start gap-3 ${
-          formStatus.type === 'success' 
-            ? 'bg-green-900/20 border border-green-800' 
-            : 'bg-red-900/20 border border-red-800'
+          formStatus.type === "success" 
+            ? "bg-green-900/20 border border-green-800" 
+            : "bg-red-900/20 border border-red-800"
         }`}>
-          {formStatus.type === 'success' ? (
+          {formStatus.type === "success" ? (
             <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
           ) : (
             <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
           )}
           <p className={`text-sm ${
-            formStatus.type === 'success' ? 'text-green-300' : 'text-red-300'
+            formStatus.type === "success" ? "text-green-300" : "text-red-300"
           }`}>
             {formStatus.message}
           </p>

@@ -15,7 +15,7 @@ function getCurrentPage(url) {
   }
 
   const pageName = Object.keys(PAGES).find(
-    page => page.toLowerCase() === urlLastPart.toLowerCase()
+    page => page.toLowerCase() === urlLastPart.toLowerCase(),
   );
   
   return pageName || Object.keys(PAGES)[0];

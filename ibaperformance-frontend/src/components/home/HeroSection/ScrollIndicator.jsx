@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-export const ScrollIndicator = memo(function ScrollIndicator() {
+export const ScrollIndicator = memo(() => {
   return (
     <div
       className="hidden lg:absolute lg:bottom-8 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:z-20 lg:flex"

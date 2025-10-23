@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 
-export const ShowcaseHeader = memo(function ShowcaseHeader() {
+export const ShowcaseHeader = memo(() => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

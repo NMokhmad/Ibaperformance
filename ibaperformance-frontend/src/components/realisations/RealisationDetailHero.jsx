@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button";
 import { urlFor } from "../../lib/sanity";
 import { Calendar } from "lucide-react";
 
-export const RealisationDetailHero = memo(function RealisationDetailHero({ 
+export const RealisationDetailHero = memo(({ 
   project, 
   currentImageIndex, 
   onNext, 
   onPrevious, 
-  onBack 
-}) {
+  onBack, 
+}) => {
   return (
     <section className="relative bg-zinc-950 py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,8 +84,8 @@ export const RealisationDetailHero = memo(function RealisationDetailHero({
                   onClick={() => onNext()}
                   className={`flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
                     currentImageIndex === index
-                      ? 'border-zinc-100 ring-2 ring-zinc-100/30 shadow-lg'
-                      : 'border-zinc-700 hover:border-zinc-500'
+                      ? "border-zinc-100 ring-2 ring-zinc-100/30 shadow-lg"
+                      : "border-zinc-700 hover:border-zinc-500"
                   }`}
                   aria-label={`Go to image ${index + 1}`}
                 >

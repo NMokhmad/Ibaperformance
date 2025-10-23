@@ -1,8 +1,8 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
-import { Calendar, Check } from "lucide-react";
+import { Check } from "lucide-react";
 
-export const RealisationDetailContent = memo(function RealisationDetailContent({ project }) {
+export const RealisationDetailContent = memo(({ project }) => {
   return (
     <div className="lg:col-span-2">
       <motion.div
@@ -36,17 +36,17 @@ export const RealisationDetailContent = memo(function RealisationDetailContent({
         <div className="prose prose-invert prose-zinc max-w-none mb-12">
           <div className="text-lg text-zinc-300 leading-relaxed space-y-6">
             {project.fullDescription ? (
-              project.fullDescription.split('\n\n').map((paragraph, index) => {
-                if (paragraph.startsWith('## ')) {
+              project.fullDescription.split("\n\n").map((paragraph, index) => {
+                if (paragraph.startsWith("## ")) {
                   return (
                     <h2 key={index} className="text-2xl font-bold text-white mt-12 mb-4">
-                      {paragraph.replace('## ', '')}
+                      {paragraph.replace("## ", "")}
                     </h2>
                   );
-                } else if (paragraph.startsWith('### ')) {
+                } else if (paragraph.startsWith("### ")) {
                   return (
                     <h3 key={index} className="text-xl font-bold text-white mt-8 mb-3">
-                      {paragraph.replace('### ', '')}
+                      {paragraph.replace("### ", "")}
                     </h3>
                   );
                 }

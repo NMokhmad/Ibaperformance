@@ -6,7 +6,7 @@ export function SEO({
   keywords = "reprogrammation moteur, préparation automobile, optimisation performance, stage moteur, préparation circuit, chiptuning, garage performance",
   ogImage = "/assets/og-image.jpg",
   canonical,
-  type = "website"
+  type = "website",
 }) {
   const siteUrl = "https://ibaperformance.fr";
   const fullUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
@@ -56,10 +56,10 @@ export function SEO({
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Paris",
-            "addressCountry": "FR"
+            "addressCountry": "FR",
           },
           "sameAs": [
-            "https://www.instagram.com/ibaperformance"
+            "https://www.instagram.com/ibaperformance",
           ],
           "priceRange": "€€€",
           "openingHoursSpecification": [
@@ -67,9 +67,9 @@ export function SEO({
               "@type": "OpeningHoursSpecification",
               "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
               "opens": "09:00",
-              "closes": "18:00"
-            }
-          ]
+              "closes": "18:00",
+            },
+          ],
         })}
       </script>
     </Helmet>

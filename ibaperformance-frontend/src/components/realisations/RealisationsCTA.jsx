@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export const RealisationsCTA = memo(function RealisationsCTA() {
+export const RealisationsCTA = memo(() => {
   return (
     <section className="py-24 bg-zinc-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

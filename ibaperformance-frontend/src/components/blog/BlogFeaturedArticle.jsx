@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Calendar, Clock, Tag } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export const BlogFeaturedArticle = memo(function BlogFeaturedArticle({ article }) {
+export const BlogFeaturedArticle = memo(({ article }) => {
   if (!article) return null;
 
   return (

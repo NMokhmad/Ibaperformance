@@ -1,7 +1,7 @@
 import { memo } from "react";
 import BlogCard from "./BlogCard";
 
-const EmptyState = memo(function EmptyState() {
+const EmptyState = memo(() => {
   return (
     <div className="text-center py-16">
       <p className="text-zinc-500 text-lg">Aucun article trouvé dans cette catégorie.</p>
@@ -9,10 +9,10 @@ const EmptyState = memo(function EmptyState() {
   );
 });
 
-export const BlogArticlesGrid = memo(function BlogArticlesGrid({ 
+export const BlogArticlesGrid = memo(({ 
   articles, 
-  onArticleClick 
-}) {
+  onArticleClick, 
+}) => {
   if (articles.length === 0) {
     return (
       <section className="py-16 bg-zinc-950">

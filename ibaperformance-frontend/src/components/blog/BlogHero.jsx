@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { BookOpen, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
-export const BlogHero = memo(function BlogHero({ searchQuery, onSearchChange }) {
+export const BlogHero = memo(({ searchQuery, onSearchChange }) => {
   return (
     <section className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 to-zinc-950" />

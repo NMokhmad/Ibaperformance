@@ -11,7 +11,7 @@ const containerVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export const HeroSection = memo(function HeroSection() {
+export const HeroSection = memo(() => {
   const parallaxOffset = useParallax(0.5);
 
   const stats = useMemo(
@@ -19,7 +19,7 @@ export const HeroSection = memo(function HeroSection() {
       { icon: Gauge, value: "500+", label: "Véhicules préparés" },
       { icon: Zap, value: "15 ans", label: "D'expérience" },
     ],
-    []
+    [],
   );
 
   return (

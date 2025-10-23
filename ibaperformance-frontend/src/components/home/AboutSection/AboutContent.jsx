@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 
-export const AboutContent = memo(function AboutContent() {
+export const AboutContent = memo(() => {
   return (
     <motion.div
       initial={{ opacity: 0, x: -30 }}

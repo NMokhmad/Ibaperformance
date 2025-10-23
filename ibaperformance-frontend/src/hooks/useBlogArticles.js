@@ -33,13 +33,13 @@ export function useBlogArticles() {
       const formattedArticles = data.map(article => ({
         id: article._id,
         title: article.title,
-        slug: article.slug?.current || article.title.toLowerCase().replace(/\s+/g, '-'),
+        slug: article.slug?.current || article.title.toLowerCase().replace(/\s+/g, "-"),
         excerpt: article.excerpt,
         content: article.content,
         image: article.image ? urlFor(article.image).url() : "",
         category: article.category,
         categoryLabel: article.categoryLabel || article.category,
-        date: new Date(article.date).toLocaleDateString('fr-FR'),
+        date: new Date(article.date).toLocaleDateString("fr-FR"),
         readTime: `${article.readTime}min`,
         tags: article.tags || [],
         author: article.author || "IBA Performance",
@@ -51,7 +51,7 @@ export function useBlogArticles() {
       const uniqueCategories = [
         { value: "all", label: "Tous les articles" },
         ...Array.from(
-          new Set(formattedArticles.map(a => a.category))
+          new Set(formattedArticles.map(a => a.category)),
         )
           .filter(cat => cat !== "all")
           .map(cat => ({
@@ -77,6 +77,6 @@ export function useBlogArticles() {
     categories, 
     loading, 
     error,
-    refetch: fetchArticles // Pour le bouton "Réessayer"
+    refetch: fetchArticles, // Pour le bouton "Réessayer"
   };
 }

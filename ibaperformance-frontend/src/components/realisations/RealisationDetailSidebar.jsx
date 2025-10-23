@@ -2,7 +2,7 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-export const RealisationDetailSidebar = memo(function RealisationDetailSidebar({ project }) {
+export const RealisationDetailSidebar = memo(({ project }) => {
   return (
     <div className="lg:col-span-1">
       <motion.div
@@ -19,7 +19,7 @@ export const RealisationDetailSidebar = memo(function RealisationDetailSidebar({
               {Object.entries(project.technicalData).map(([key, value]) => (
                 <div key={key} className="border-b border-zinc-800 last:border-0 pb-3 last:pb-0">
                   <div className="text-xs text-zinc-500 mb-1 capitalize">
-                    {key.replace('_', ' ')}
+                    {key.replace("_", " ")}
                   </div>
                   <div className="text-sm text-white font-medium">{value}</div>
                 </div>

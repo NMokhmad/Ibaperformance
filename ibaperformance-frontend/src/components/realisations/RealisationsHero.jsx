@@ -2,10 +2,10 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import { Gauge } from "lucide-react";
 
-export const RealisationsHero = memo(function RealisationsHero({ 
+export const RealisationsHero = memo(({ 
   projectsCount, 
-  totalPower 
-}) {
+  totalPower, 
+}) => {
   return (
     <section className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 to-zinc-950" />

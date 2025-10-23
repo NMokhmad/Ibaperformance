@@ -32,7 +32,7 @@ export function generateArticleSEO(article, slug) {
   return {
     title: `${article.title} | Blog IBA Performance`,
     description: article.excerpt || article.description,
-    keywords: article.tags?.join(', ') || "performance automobile",
+    keywords: article.tags?.join(", ") || "performance automobile",
     canonical: `/blog/${slug}`,
     type: "article",
     ogImage: article.image,

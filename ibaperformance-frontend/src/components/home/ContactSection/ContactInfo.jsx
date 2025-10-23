@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 
-export const ContactInfo = memo(function ContactInfo({ contactInfo }) {
+export const ContactInfo = memo(({ contactInfo }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {contactInfo.map((info, index) => {

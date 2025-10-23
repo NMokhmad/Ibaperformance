@@ -2,7 +2,7 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export const ServiceCard = memo(function ServiceCard({ service, index }) {
+export const ServiceCard = memo(({ service, index }) => {
   const Icon = service.icon;
 
   return (

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 export function ErrorState({ 
   message = "Une erreur est survenue", 
   onRetry,
-  showRetry = true 
+  showRetry = true, 
 }) {
   return (
     <div className="min-h-screen bg-zinc-950 pt-20 flex items-center justify-center">

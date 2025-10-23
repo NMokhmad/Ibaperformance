@@ -4,7 +4,7 @@ import { FooterContact } from "./FooterContact";
 import { footerLinks } from "../../constants/navigation";
 import logo from "/assets/Favorite-2-removebg-preview.webp";
 
-export const Footer = memo(function Footer({ settings }) {
+export const Footer = memo(({ settings }) => {
   return (
     <footer className="bg-zinc-950 border-t border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

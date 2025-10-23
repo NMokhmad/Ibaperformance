@@ -9,7 +9,7 @@ import { RealisationDetailContent } from "./realisations/RealisationDetailConten
 import { RealisationDetailSidebar } from "./realisations/RealisationDetailSidebar.jsx";
 import { RelatedProjects } from "./realisations/RelatedProjects.jsx";
 import { createPageUrl } from "../utils/index.ts";
-import { SEO } from "./seo/SEO.jsx"
+import { SEO } from "./seo/SEO.jsx";
 import { generateRealisationSEO } from "../config/seo.config";
 
 export default function RealisationDetail() {

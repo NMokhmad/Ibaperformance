@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { navigationItems } from "../../constants/navigation";
 
-export const Navigation = memo(function Navigation() {
+export const Navigation = memo(() => {
   return (
     <nav className="hidden lg:flex items-center gap-8">
       {navigationItems.map((item) => (

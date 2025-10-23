@@ -7,7 +7,7 @@ import { ContactInfo } from "./ContactInfo";
 import { ContactMap } from "./ContactMap";
 import { ContactForm } from "./ContactForm";
 
-export const ContactSection = memo(function ContactSection() {
+export const ContactSection = memo(() => {
   const { settings, loading } = useSettingsContext();
 
   const contactInfo = useMemo(() => {
@@ -18,7 +18,7 @@ export const ContactSection = memo(function ContactSection() {
         icon: Phone,
         title: "Téléphone",
         value: settings.telephone || "+33 1 23 45 67 89",
-        link: `tel:${settings.telephone?.replace(/\s/g, '')}`,
+        link: `tel:${settings.telephone?.replace(/\s/g, "")}`,
       },
       {
         icon: Mail,

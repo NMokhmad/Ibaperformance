@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
-export const ShowcaseCTA = memo(function ShowcaseCTA() {
+export const ShowcaseCTA = memo(() => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

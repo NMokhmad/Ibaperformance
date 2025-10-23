@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { navigationItems } from "../../constants/navigation";
 
-export const MobileMenu = memo(function MobileMenu({ isOpen, onClose }) {
+export const MobileMenu = memo(({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (

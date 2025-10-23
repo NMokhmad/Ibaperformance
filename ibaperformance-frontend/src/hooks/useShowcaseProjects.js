@@ -33,7 +33,7 @@ export function useShowcaseProjects(limit = 6) {
         const formattedProjects = data.map(project => ({
           id: project._id,
           title: project.titre,
-          slug: project.slug?.current || project.titre.toLowerCase().replace(/\s+/g, '-'),
+          slug: project.slug?.current || project.titre.toLowerCase().replace(/\s+/g, "-"),
           description: project.description,
           category: project.categorie,
           date: project.date,

@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Phone, Mail } from "lucide-react";
 
-export const FooterContact = memo(function FooterContact({ settings }) {
+export const FooterContact = memo(({ settings }) => {
   return (
     <div>
       <h4 className="text-sm font-semibold mb-4 text-zinc-200">Contact</h4>
@@ -10,7 +10,7 @@ export const FooterContact = memo(function FooterContact({ settings }) {
           <li className="flex items-center gap-2 text-sm text-zinc-400">
             <Phone className="w-4 h-4" />
             <a 
-              href={`tel:${settings.telephone.replace(/\s/g, '')}`}
+              href={`tel:${settings.telephone.replace(/\s/g, "")}`}
               className="hover:text-zinc-200 transition-colors"
             >
               {settings.telephone}

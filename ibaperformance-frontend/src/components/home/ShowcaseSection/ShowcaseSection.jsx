@@ -6,7 +6,7 @@ import { ShowcaseHeader } from "./ShowcaseHeader";
 import { ProjectCard } from "./ProjectCard";
 import { ShowcaseCTA } from "./ShowcaseCTA";
 
-export const ShowcaseSection = memo(function ShowcaseSection() {
+export const ShowcaseSection = memo(() => {
   const { projects, loading, error } = useShowcaseProjects(6);
 
   if (loading) {

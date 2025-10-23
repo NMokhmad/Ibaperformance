@@ -34,7 +34,7 @@ export function useRealisations() {
       const formattedProjects = data.map(project => ({
         id: project._id,
         title: project.titre,
-        slug: project.slug?.current || project.titre.toLowerCase().replace(/\s+/g, '-'),
+        slug: project.slug?.current || project.titre.toLowerCase().replace(/\s+/g, "-"),
         description: project.description,
         category: project.categorie,
         date: project.date,
@@ -50,7 +50,7 @@ export function useRealisations() {
       const uniqueCategories = [
         { value: "all", label: "Toutes les catégories" },
         ...Array.from(
-          new Set(formattedProjects.map(p => p.category))
+          new Set(formattedProjects.map(p => p.category)),
         )
           .filter(cat => cat && cat !== "all")
           .map(cat => ({

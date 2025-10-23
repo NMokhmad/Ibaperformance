@@ -5,7 +5,7 @@ import { ErrorState } from "../../common/ErrorState";
 import { ServicesHeader } from "./ServicesHeader";
 import { ServiceCard } from "./ServiceCard";
 
-export const ServicesSection = memo(function ServicesSection() {
+export const ServicesSection = memo(() => {
   const { services, loading, error } = useServices();
 
   if (loading) {

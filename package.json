@@ -18,15 +18,13 @@
     "@sanity/vision": "^4.10.3",
     "react": "^19.1",
     "react-dom": "^19.1",
-    "sanity": "^4.10.3",
+    "sanity": "^2.36.6",
     "styled-components": "^6.1.18"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^5.0.2",
-    "@types/react": "^19.1",
     "eslint": "^9.28",
-    "prettier": "^3.5",
-    "typescript": "^5.8"
+    "prettier": "^3.5"
   },
   "prettier": {
     "semi": false,

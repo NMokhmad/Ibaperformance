@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 
-export const ContactMap = memo(function ContactMap({ mapUrl }) {
+export const ContactMap = memo(({ mapUrl }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
-export const ProjectCard = memo(function ProjectCard({ project, index }) {
+export const ProjectCard = memo(({ project, index }) => {
   const isLarge = index === 0;
 
   return (

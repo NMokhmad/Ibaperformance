@@ -1,9 +1,9 @@
 import ReactDOM from "react-dom/client";
-import React from 'react'
+import React from "react";
 import App from "@/App.jsx";
 import "./index.css";
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/react'
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 
