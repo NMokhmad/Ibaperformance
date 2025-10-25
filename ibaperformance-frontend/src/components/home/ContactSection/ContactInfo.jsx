@@ -17,12 +17,12 @@ export const ContactInfo = memo(({ contactInfo }) => {
             className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-zinc-700 hover:bg-zinc-800 transition-all duration-300 group"
           >
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 bg-zinc-800 rounded-lg flex items-center justify-center group-hover:bg-zinc-700 transition-colors">
-                <Icon className="w-5 h-5 text-zinc-400" />
+              <div className="w-10 h-10 min-w-[2.5rem] bg-zinc-800 rounded-lg flex items-center justify-center group-hover:bg-zinc-700 transition-colors flex-shrink-0">
+                <Icon className="w-5 h-5 text-zinc-400 flex-shrink-0" />
               </div>
-              <div>
+              <div className="flex-1 min-w-0">
                 <div className="text-sm text-zinc-500 mb-1">{info.title}</div>
-                <div className="text-sm font-medium text-white whitespace-pre-line">
+                <div className="text-sm font-medium text-white whitespace-pre-line break-words">
                   {info.value}
                 </div>
               </div>

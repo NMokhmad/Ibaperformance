@@ -57,14 +57,14 @@ export const HeroSection = memo(() => {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 md:py-32 text-center">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 tracking-tight leading-tight">
             <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
               Performance et précision
             </span>
@@ -72,23 +72,23 @@ export const HeroSection = memo(() => {
             <span className="text-white">au service de votre moteur</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-zinc-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-zinc-300 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4">
             Spécialiste de la reprogrammation moteur, préparation circuit et optimisation de
             performances. Libérez le véritable potentiel de votre véhicule.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button size="default" variant="default" asChild>
-              <a href="#realisations">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-10 sm:mb-16 px-4">
+            <Button size="default" variant="default" className="w-full sm:w-auto text-sm sm:text-base" asChild>
+              <a href="#realisations" className="flex items-center justify-center gap-2">
                 Voir mes réalisations
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
 
-            <Button size="default" variant="default" asChild>
-              <a href="#services">
+            <Button size="default" variant="default" className="w-full sm:w-auto text-sm sm:text-base" asChild>
+              <a href="#services" className="flex items-center justify-center gap-2">
                 Voir mes services
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
           </div>
