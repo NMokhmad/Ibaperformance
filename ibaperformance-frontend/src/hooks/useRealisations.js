@@ -46,6 +46,21 @@ export function useRealisations() {
 
       setProjects(formattedProjects);
 
+      // Mapping des catégories avec leurs labels corrects
+      const categoryLabels = {
+        reprogrammation: 'Reprogrammation',
+        moteur: 'Préparation moteur',
+        echappement: 'Échappement',
+        admission: 'Admission',
+        esthetique: 'Esthétique',
+        suspension: 'Suspension',
+        freinage: 'Freinage',
+        circuit: 'Préparation circuit',
+        pack: 'Pack performance',
+        pieces: 'Installation racing',
+        extreme: 'Préparations extrêmes',
+      };
+
       // Crée les catégories uniques
       const uniqueCategories = [
         { value: "all", label: "Toutes les catégories" },
@@ -55,7 +70,7 @@ export function useRealisations() {
           .filter(cat => cat && cat !== "all")
           .map(cat => ({
             value: cat,
-            label: cat.charAt(0).toUpperCase() + cat.slice(1),
+            label: categoryLabels[cat] || cat.charAt(0).toUpperCase() + cat.slice(1),
           })),
       ];
       setCategories(uniqueCategories);

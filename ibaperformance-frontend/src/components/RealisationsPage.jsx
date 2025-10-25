@@ -23,6 +23,7 @@ export default function RealisationsPage() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const handleCategoryChange = useCallback((value) => {
+    console.log('🔄 Changement de catégorie vers:', value);
     setSelectedCategory(value);
   }, [setSelectedCategory]);
 

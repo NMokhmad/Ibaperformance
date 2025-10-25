@@ -25,10 +25,12 @@ export default function BlogPage() {
   const [selectedArticle, setSelectedArticle] = useState(null);
 
   const handleSearchChange = useCallback((value) => {
+    console.log('🔍 [Blog] Changement de recherche:', value);
     setSearchQuery(value);
   }, [setSearchQuery]);
 
   const handleCategoryChange = useCallback((value) => {
+    console.log('🔄 [Blog] Changement de catégorie vers:', value);
     setSelectedCategory(value);
   }, [setSelectedCategory]);
 
