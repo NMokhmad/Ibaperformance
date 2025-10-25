@@ -94,6 +94,11 @@
     <!-- Preconnect pour performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <!-- Preload critical LCP image -->
+    <link rel="preload" as="image" href="/assets/Favorite4-mobile.webp" media="(max-width: 767px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/assets/Favorite4-tablet.webp" media="(min-width: 768px) and (max-width: 1279px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/assets/Favorite4-desktop.webp" media="(min-width: 1280px)" fetchpriority="high" />
     
     <!-- Theme Color -->
     <meta name="theme-color" content="#18181b" />

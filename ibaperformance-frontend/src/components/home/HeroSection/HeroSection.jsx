@@ -1,15 +1,9 @@
 import { memo, useMemo } from "react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import { ArrowRight, Gauge, Zap } from "lucide-react";
 import { useParallax } from "../../../hooks/useParallax";
 import { HeroStats } from "./HeroStats";
 import { ScrollIndicator } from "./ScrollIndicator";
-
-const containerVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
 
 export const HeroSection = memo(() => {
   const parallaxOffset = useParallax(0.5);
@@ -36,11 +30,14 @@ export const HeroSection = memo(() => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/90 via-zinc-950/60 to-zinc-950 z-10" />
         <img
-          src="/assets/Favorite4.webp"
+          src="/assets/Favorite4-desktop.webp"
+          srcSet="/assets/Favorite4-mobile.webp 640w, /assets/Favorite4-tablet.webp 1024w, /assets/Favorite4-desktop.webp 1920w"
+          sizes="100vw"
           alt=""
           className="w-full h-full object-cover"
           loading="eager"
-          fetchpriority="high"
+          fetchPriority="high"
+          decoding="async"
         />
       </div>
 
@@ -58,12 +55,7 @@ export const HeroSection = memo(() => {
 
       {/* Content */}
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 md:py-32 text-center">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.8 }}
-        >
+        <div className="animate-fade-in">
           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 tracking-tight leading-tight">
             <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
               Performance et précision
@@ -94,7 +86,7 @@ export const HeroSection = memo(() => {
           </div>
 
           <HeroStats stats={stats} />
-        </motion.div>
+        </div>
 
         <ScrollIndicator />
       </div>
