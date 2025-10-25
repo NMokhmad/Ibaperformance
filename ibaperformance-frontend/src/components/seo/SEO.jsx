@@ -8,7 +8,7 @@ export function SEO({
   canonical,
   type = "website",
 }) {
-  const siteUrl = "https://ibaperformance.fr";
+  const siteUrl = "https://ibaperformance.com";
   const fullUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
 
   return (
@@ -59,7 +59,7 @@ export function SEO({
             "addressCountry": "FR",
           },
           "sameAs": [
-            "https://www.instagram.com/ibaperformance",
+            "https://www.instagram.com/iba_performance",
           ],
           "priceRange": "€€€",
           "openingHoursSpecification": [
