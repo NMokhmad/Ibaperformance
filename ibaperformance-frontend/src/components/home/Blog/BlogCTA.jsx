@@ -5,7 +5,7 @@ import { ArrowRight, BookOpen } from "lucide-react";
 
 export const BlogCTA = memo(() => {
   return (
-    <section className="relative py-16 bg-gradient-to-b from-zinc-50 to-white overflow-hidden">
+    <section id="blog" className="relative py-16 bg-gradient-to-b from-zinc-50 to-white overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{

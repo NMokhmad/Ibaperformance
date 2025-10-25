@@ -10,7 +10,7 @@ export function BlogDetailHero({ article, currentImageIndex, onNext, onPrevious,
 
   return (
     <section className="relative bg-zinc-950 py-6 sm:py-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative aspect-video bg-zinc-900 overflow-hidden group rounded-lg shadow-2xl">
           <img
             src={urlFor(mainImage).url()}

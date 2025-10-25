@@ -37,7 +37,7 @@ export const HeroSection = memo(() => {
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/90 via-zinc-950/60 to-zinc-950" />

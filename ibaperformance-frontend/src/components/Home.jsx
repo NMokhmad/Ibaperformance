@@ -21,8 +21,8 @@ const Home = memo(() => {
       <HeroSection />
       <ServicesSection />
       <ShowcaseSection />
-      <AboutSection />
       <BlogCTA />
+      <AboutSection />
       <ContactSection />
     </>
   );
