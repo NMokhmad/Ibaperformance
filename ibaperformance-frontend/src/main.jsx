@@ -1,16 +1,18 @@
 import ReactDOM from "react-dom/client";
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import App from "@/App.jsx";
 import "./index.css";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
+
+// Lazy load analytics to improve initial load
+const Analytics = lazy(() => import("@vercel/analytics/react").then(m => ({ default: m.Analytics })));
+const SpeedInsights = lazy(() => import("@vercel/speed-insights/react").then(m => ({ default: m.SpeedInsights })));
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-
     <React.StrictMode>
         <App />
-        <Analytics />
-        <SpeedInsights />
+        <Suspense fallback={null}>
+            <Analytics />
+            <SpeedInsights />
+        </Suspense>
     </React.StrictMode>,
-
 ); 

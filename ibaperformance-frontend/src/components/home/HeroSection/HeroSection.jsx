@@ -28,6 +28,8 @@ export const HeroSection = memo(() => {
         style={{ transform: `translateY(${parallaxOffset}px)` }}
         aria-hidden="true"
       >
+        {/* Solid color placeholder to prevent layout shift */}
+        <div className="absolute inset-0 bg-zinc-900" />
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/90 via-zinc-950/60 to-zinc-950 z-10" />
         <img
           src="/assets/Favorite4-desktop.webp"

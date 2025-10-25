@@ -1,8 +1,18 @@
+import { Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import Layout from "../Layout";
 import ScrollToTop from "../../utils/ScrollToTop";
 import { routes, PAGES } from "./routes.config";
 import { SettingsProvider } from "../../contexts/SettingsContext"; // AJOUT
+
+// Lightweight loading fallback
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-zinc-950">
+      <div className="w-8 h-8 border-2 border-zinc-500 border-t-white rounded-full animate-spin" />
+    </div>
+  );
+}
 
 function getCurrentPage(url) {
   if (url.endsWith("/")) {
@@ -24,19 +34,21 @@ function getCurrentPage(url) {
 function AppContent() {
   const location = useLocation();
   const currentPage = getCurrentPage(location.pathname);
-  
+
   return (
     <Layout currentPageName={currentPage}>
       <ScrollToTop />
-      <Routes>
-        {routes.map((route) => (
-          <Route 
-            key={route.path} 
-            path={route.path} 
-            element={<route.component />} 
-          />
-        ))}
-      </Routes>
+      <Suspense fallback={<LoadingFallback />}>
+        <Routes>
+          {routes.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={<route.component />}
+            />
+          ))}
+        </Routes>
+      </Suspense>
     </Layout>
   );
 }

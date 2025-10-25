@@ -1,8 +1,13 @@
+import { lazy } from "react";
+
+// Eager load Home page (critical for LCP)
 import Home from "../Home";
-import Realisations from "../RealisationsPage";
-import RealisationDetail from "../RealisationDetail";
-import Blog from "../BlogPage";
-import BlogDetail from "../BlogDetail";
+
+// Lazy load non-critical pages for better initial load
+const Realisations = lazy(() => import("../RealisationsPage"));
+const RealisationDetail = lazy(() => import("../RealisationDetail"));
+const Blog = lazy(() => import("../BlogPage"));
+const BlogDetail = lazy(() => import("../BlogDetail"));
 
 export const PAGES = {
   Home: Home,

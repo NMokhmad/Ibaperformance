@@ -91,9 +91,9 @@
     <!-- Google Site Verification (à ajouter après création du compte Search Console) -->
     <!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> -->
     
-    <!-- Preconnect pour performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <!-- DNS Prefetch & Preconnect pour performance critique -->
+    <link rel="dns-prefetch" href="https://cdn.sanity.io" />
+    <link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
 
     <!-- Preload critical LCP image -->
     <link rel="preload" as="image" href="/assets/Favorite4-mobile.webp" media="(max-width: 767px)" fetchpriority="high" />
