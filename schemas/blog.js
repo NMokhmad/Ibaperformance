@@ -48,7 +48,6 @@ export default {
       type: 'string',
       options: {
         list: [
-          {title: 'Tous les articles', value: 'all'},
           {title: 'Guides', value: 'guides'},
           {title: 'Tutoriels', value: 'tutoriels'},
           {title: 'Actualités', value: 'actualites'},

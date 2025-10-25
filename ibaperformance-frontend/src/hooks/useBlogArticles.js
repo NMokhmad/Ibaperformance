@@ -48,17 +48,6 @@ export function useBlogArticles() {
 
       setArticles(formattedArticles);
 
-      // Mapping des catégories avec leurs labels corrects
-      const categoryLabels = {
-        guides: 'Guides',
-        tutoriels: 'Tutoriels',
-        actualites: 'Actualités',
-        conseils: 'Conseils',
-        preparation: 'Préparation',
-        technique: 'Technique',
-        performance: 'Performance',
-      };
-
       const uniqueCategories = [
         { value: "all", label: "Tous les articles" },
         ...Array.from(
@@ -67,7 +56,7 @@ export function useBlogArticles() {
           .filter(cat => cat !== "all")
           .map(cat => ({
             value: cat,
-            label: categoryLabels[cat] || cat.charAt(0).toUpperCase() + cat.slice(1),
+            label: cat.charAt(0).toUpperCase() + cat.slice(1),
           })),
       ];
       setCategories(uniqueCategories);

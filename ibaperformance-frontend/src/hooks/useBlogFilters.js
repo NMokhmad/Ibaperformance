@@ -36,12 +36,24 @@ export function useBlogFilters(articles) {
 
   // Article vedette provient des articles FILTRÉS, pas de tous les articles
   const featuredArticle = useMemo(() => {
-    return filteredArticles.find(a => a.featured) || filteredArticles[0];
+    const featured = filteredArticles.find(a => a.featured) || filteredArticles[0];
+    console.log('⭐ [Blog] Article vedette:', featured?.title, '| ID:', featured?.id);
+    return featured;
   }, [filteredArticles]);
 
   const remainingArticles = useMemo(() => {
-    // Retire l'article vedette des résultats filtrés
-    return filteredArticles.filter(a => a.id !== featuredArticle?.id);
+    // Si on a 3 articles ou moins, on affiche tous les articles dans la grille
+    // (même l'article vedette pour éviter une grille vide)
+    if (filteredArticles.length <= 3) {
+      console.log('📰 [Blog] Articles restants: tous affichés (', filteredArticles.length, 'articles)');
+      return filteredArticles;
+    }
+
+    // Sinon, on retire l'article vedette des résultats filtrés
+    const remaining = filteredArticles.filter(a => a.id !== featuredArticle?.id);
+    console.log('📰 [Blog] Articles restants:', remaining.length);
+    remaining.forEach(a => console.log('  -', a.title, '| ID:', a.id));
+    return remaining;
   }, [filteredArticles, featuredArticle]);
 
   return {
