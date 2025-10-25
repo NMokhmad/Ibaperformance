@@ -30,17 +30,17 @@ export const HeroSection = memo(() => {
       >
         {/* Solid color placeholder to prevent layout shift */}
         <div className="absolute inset-0 bg-zinc-900" />
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/90 via-zinc-950/60 to-zinc-950 z-10" />
         <img
           src="/assets/Favorite4-desktop.webp"
           srcSet="/assets/Favorite4-mobile.webp 640w, /assets/Favorite4-tablet.webp 1024w, /assets/Favorite4-desktop.webp 1920w"
           sizes="100vw"
           alt=""
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
           fetchPriority="high"
           decoding="async"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/90 via-zinc-950/60 to-zinc-950" />
       </div>
 
       {/* Grid Overlay */}
