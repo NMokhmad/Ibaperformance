@@ -55,7 +55,7 @@ export default function BlogPage() {
     <>
       <SEO {...seoConfig.pages.blog} />
 
-      <div className="min-h-screen bg-zinc-950 pt-20">
+      <div className="min-h-screen pt-20" style={{ background: 'var(--color-charcoal)' }}>
         <BlogHero 
           searchQuery={searchQuery} 
           onSearchChange={handleSearchChange} 

@@ -1,49 +1,148 @@
 @import 'tailwindcss';
 
+:root {
+  /* Palette monochrome — blanc sur sombre, noir sur clair */
+  --color-accent: #FFFFFF;          /* accent blanc (sections sombres) */
+  --color-accent-hover: #E8E4DA;    /* hover warm off-white */
+  --color-accent-dark: #1A1918;     /* accent sombre (sections claires) */
+  --color-charcoal: #0A0A0C;
+  --color-warm-white: #F5F4F1;
+  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* Alias legacy pour composants dark (Hero, Showcase, Contact, Blog) */
+  --color-racing-red: #FFFFFF;
+  --color-racing-red-dark: #E8E4DA;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* bloque le scroll horizontal */
-   /* pour un scroll fluide */
+  overflow-x: hidden;
+  font-family: var(--font-body);
 }
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
 .scrollbar-hide {
-  -ms-overflow-style: none; /* IE et Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Lightweight CSS animations to replace Framer Motion for better LCP */
+/* Lightweight CSS animations */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes racingLineGrow {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+  animation: fadeIn 0.7s ease-out forwards;
 }
 
 .animate-fade-in-up {
   opacity: 0;
   animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in-left {
+  opacity: 0;
+  animation: fadeInLeft 0.7s ease-out forwards;
+}
+
+.animate-racing-line {
+  transform-origin: left center;
+  animation: racingLineGrow 0.8s ease-out forwards;
+}
+
+/* Bouton blanc (fond sombre) — texte noir */
+.btn-racing {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: #FFFFFF;
+  color: #0A0A0C;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-racing:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+/* Bouton outline (fond sombre) */
+.btn-outline-racing {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: white;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: border-color 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-outline-racing:hover {
+  border-color: white;
+  background: rgba(255,255,255,0.05);
+}
+
+/* Bouton sombre (fond clair) — texte blanc */
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: var(--color-accent-dark);
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-dark:hover {
+  background: #0A0A0C;
+  transform: translateY(-1px);
 }

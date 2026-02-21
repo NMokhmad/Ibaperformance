@@ -24,7 +24,7 @@ export default function Layout({ children }) {
   }, [location]);
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white">
+    <div className="min-h-screen text-white" style={{ background: 'var(--color-charcoal)' }}>
       <Header scrolled={scrolled} />
       
       <main className="min-h-screen">

@@ -1,98 +1,141 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const BlogCTA = memo(() => {
   return (
-    <section id="blog" className="relative py-16 bg-gradient-to-b from-zinc-50 to-white overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: "radial-gradient(circle at 2px 2px, #18181b 1px, transparent 0)",
-          backgroundSize: "40px 40px",
-        }} />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="blog"
+      className="relative overflow-hidden"
+      style={{ background: 'var(--color-warm-white)', paddingTop: '5rem', paddingBottom: '5rem' }}
+    >
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-br from-zinc-900 to-zinc-950 rounded-3xl p-8 md:p-12 shadow-2xl border border-zinc-800"
         >
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            {/* Left - Content */}
-            <div>
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-                <BookOpen className="w-4 h-4 text-zinc-300" />
-                <span className="text-sm font-medium text-zinc-200">Blog & Conseils</span>
-              </div>
+          {/* Full-width editorial banner */}
+          <div
+            className="relative overflow-hidden"
+            style={{
+              background: 'var(--color-charcoal)',
+              padding: '4rem 3rem',
+            }}
+          >
+            {/* Red top border accent */}
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'rgba(255,255,255,0.55)' }} />
 
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Envie d'en savoir plus sur la préparation auto ?
-              </h2>
-              
-              <p className="text-lg text-zinc-300 mb-6 leading-relaxed">
-                Découvrez nos guides techniques, tutoriels de reprogrammation et actualités 
-                du monde de la performance automobile. Conseils d'experts et retours d'expérience.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold shadow-lg group"
-                  asChild
-                >
-                  <a href="/blog">
-                    Découvrir le blog
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </Button>
-
-                {/*<Button
-                  size="lg"
-                  variant="outline"
-                  className="border-zinc-700 text-white hover:bg-zinc-800"
-                  asChild
-                >
-                  <a href="#contact">
-                    Poser une question
-                  </a>
-                </Button>*/}
-              </div>
+            {/* Large ghost text background */}
+            <div
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                right: '-2rem',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(6rem, 15vw, 12rem)',
+                color: 'rgba(255,255,255,0.03)',
+                lineHeight: 1,
+                letterSpacing: '0.05em',
+                userSelect: 'none',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              BLOG
             </div>
 
-            {/* Right - Visual */}
-            <div className="hidden lg:block">
-              <div className="relative">
-                {/* Cards preview */}
-                <div className="space-y-4">
-                  <div className="bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-xl p-4 transform rotate-2 hover:rotate-0 transition-transform">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-10 h-10 bg-gradient-to-br from-zinc-700 to-zinc-900 rounded-lg flex items-center justify-center">
-                        <BookOpen className="w-5 h-5 text-zinc-300" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="h-3 bg-zinc-700 rounded w-3/4 mb-2"></div>
-                        <div className="h-2 bg-zinc-800 rounded w-1/2"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-xl p-4 transform -rotate-1 hover:rotate-0 transition-transform">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-10 h-10 bg-gradient-to-br from-zinc-700 to-zinc-900 rounded-lg flex items-center justify-center">
-                        <BookOpen className="w-5 h-5 text-zinc-300" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="h-3 bg-zinc-700 rounded w-2/3 mb-2"></div>
-                        <div className="h-2 bg-zinc-800 rounded w-1/3"></div>
-                      </div>
-                    </div>
-                  </div>
+            <div className="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+              {/* Left - Content */}
+              <div>
+                {/* Eyebrow */}
+                <div className="flex items-center gap-3 mb-6">
+                  <div style={{ width: '36px', height: '2px', background: 'rgba(255,255,255,0.55)' }} />
+                  <span style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.22em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(255,255,255,0.55)',
+                  }}>
+                    Blog &amp; Conseils
+                  </span>
                 </div>
+
+                <h2
+                  className="mb-5"
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
+                    color: 'white',
+                    lineHeight: 0.95,
+                    letterSpacing: '0.01em',
+                  }}
+                >
+                  ENVIE D'EN SAVOIR PLUS
+                  <br />
+                  <span style={{ color: 'rgba(255,255,255,0.35)' }}>SUR LA PRÉPARATION AUTO ?</span>
+                </h2>
+
+                <p style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.95rem',
+                  color: 'rgba(255,255,255,0.45)',
+                  lineHeight: 1.75,
+                  marginBottom: '2rem',
+                  maxWidth: '440px',
+                }}>
+                  Guides techniques, tutoriels de reprogrammation et actualités du monde de la performance automobile.
+                  Conseils d'experts et retours d'expérience.
+                </p>
+
+                <a href="/blog" className="btn-racing">
+                  Découvrir le blog
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+
+              {/* Right - Stats decoration */}
+              <div className="hidden lg:flex flex-col gap-4">
+                {[
+                  { label: 'Articles publiés', value: '24+' },
+                  { label: 'Guides techniques', value: '12' },
+                  { label: 'Tutoriels vidéo', value: '08' },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-6"
+                    style={{
+                      borderLeft: '2px solid rgba(255,255,255,0.06)',
+                      paddingLeft: '1.5rem',
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '2.5rem',
+                        color: i === 0 ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.2)',
+                        lineHeight: 1,
+                        minWidth: '80px',
+                      }}
+                    >
+                      {item.value}
+                    </div>
+                    <div style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '0.75rem',
+                      fontWeight: 500,
+                      letterSpacing: '0.12em',
+                      textTransform: 'uppercase',
+                      color: 'rgba(255,255,255,0.3)',
+                    }}>
+                      {item.label}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

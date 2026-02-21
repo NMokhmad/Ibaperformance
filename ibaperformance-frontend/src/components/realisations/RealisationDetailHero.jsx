@@ -1,8 +1,6 @@
 import { memo } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight, ArrowLeft, Calendar } from "lucide-react";
 import { urlFor } from "../../lib/sanity";
-import { Calendar } from "lucide-react";
 
 export const RealisationDetailHero = memo(({
   project,
@@ -14,99 +12,193 @@ export const RealisationDetailHero = memo(({
   const handleThumbnailClick = (index) => {
     const direction = index > currentImageIndex ? 'next' : 'previous';
     const steps = Math.abs(index - currentImageIndex);
-
     for (let i = 0; i < steps; i++) {
       direction === 'next' ? onNext() : onPrevious();
     }
   };
 
   return (
-    <section className="relative bg-zinc-950 py-6 sm:py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative aspect-video bg-zinc-900 overflow-hidden group rounded-lg shadow-2xl">
+    <section style={{ background: 'var(--color-charcoal)', padding: '2rem 0 0' }}>
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Main image */}
+        <div
+          className="relative overflow-hidden group"
+          style={{ aspectRatio: '16/9', background: '#111113' }}
+        >
           <img
             src={urlFor(project.images[currentImageIndex]).url()}
             alt={project.titre}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent" />
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(to top, rgba(10,10,12,0.7) 0%, transparent 60%)' }}
+          />
 
-          {/* Bouton retour en overlay - top left */}
-          <div className="absolute top-3 left-3 sm:top-6 sm:left-6 z-20">
-            <Button
-              variant="outline"
-              size="sm"
-              className="bg-zinc-900/90 backdrop-blur-md border-zinc-700 text-white hover:bg-zinc-800 hover:border-zinc-600 h-auto py-1.5 px-2.5 text-xs sm:text-sm sm:px-4 sm:py-2 transition-all duration-200 shadow-lg"
+          {/* Back button */}
+          <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-20">
+            <button
               onClick={onBack}
               aria-label="Retour aux réalisations"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                background: 'rgba(10,10,12,0.85)',
+                backdropFilter: 'blur(8px)',
+                border: '1px solid rgba(255,255,255,0.2)',
+                color: 'white',
+                padding: '0.45rem 0.9rem',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.7rem',
+                fontWeight: 600,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                cursor: 'pointer',
+                transition: 'border-color 0.2s ease',
+              }}
             >
-              <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 sm:mr-2" />
+              <ArrowLeft style={{ width: '13px', height: '13px' }} />
               <span className="hidden sm:inline">Retour aux réalisations</span>
-              <span className="sm:hidden ml-1">Retour</span>
-            </Button>
+              <span className="sm:hidden">Retour</span>
+            </button>
           </div>
 
+          {/* Carousel nav */}
           {project.images.length > 1 && (
             <>
               <button
                 onClick={onPrevious}
-                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-sm hover:bg-white/20 active:bg-white/30 text-white p-2 sm:p-3 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 sm:opacity-0 md:group-hover:opacity-100 border border-white/20 hover:border-white/40 shadow-xl touch-manipulation"
+                className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 touch-manipulation"
+                style={{
+                  background: 'rgba(255,255,255,0.1)',
+                  backdropFilter: 'blur(6px)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: 'white',
+                  padding: '0.6rem',
+                  cursor: 'pointer',
+                }}
                 aria-label="Image précédente"
               >
-                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+                <ChevronLeft style={{ width: '20px', height: '20px' }} />
               </button>
 
               <button
                 onClick={onNext}
-                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-sm hover:bg-white/20 active:bg-white/30 text-white p-2 sm:p-3 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 sm:opacity-0 md:group-hover:opacity-100 border border-white/20 hover:border-white/40 shadow-xl touch-manipulation"
+                className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 touch-manipulation"
+                style={{
+                  background: 'rgba(255,255,255,0.1)',
+                  backdropFilter: 'blur(6px)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: 'white',
+                  padding: '0.6rem',
+                  cursor: 'pointer',
+                }}
                 aria-label="Image suivante"
               >
-                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                <ChevronRight style={{ width: '20px', height: '20px' }} />
               </button>
 
-              <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-black/60 backdrop-blur-md text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium shadow-lg">
+              {/* Counter */}
+              <div
+                className="absolute bottom-4 right-4"
+                style={{
+                  background: 'rgba(10,10,12,0.75)',
+                  backdropFilter: 'blur(8px)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  color: 'rgba(255,255,255,0.8)',
+                  padding: '0.3rem 0.75rem',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.7rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.1em',
+                }}
+              >
                 {currentImageIndex + 1} / {project.images.length}
               </div>
             </>
           )}
         </div>
 
-        {/* Header sous l'image */}
-        <div className="mt-6 sm:mt-8">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4 leading-tight">
-            {project.titre}
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-zinc-400 mb-4 sm:mb-6 leading-relaxed">
-            {project.description}
-          </p>
-
-          <div className="flex items-center gap-4 text-sm text-zinc-500">
-            <div className="flex items-center gap-2 bg-zinc-900/50 px-3 py-1.5 rounded-lg border border-zinc-800">
-              <Calendar className="w-4 h-4 text-zinc-400" />
-              <span>{project.date}</span>
+        {/* Title & meta below image */}
+        <div style={{ paddingTop: '2rem', paddingBottom: '1.5rem' }}>
+          {/* Eyebrow row */}
+          <div className="flex items-center gap-3 mb-4">
+            <div style={{ width: '28px', height: '2px', background: 'rgba(255,255,255,0.4)' }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Calendar style={{ width: '13px', height: '13px', color: 'rgba(255,255,255,0.4)' }} />
+              <span style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.7rem',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.4)',
+              }}>
+                {project.date}
+              </span>
             </div>
           </div>
+
+          <h1 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(2.5rem, 6vw, 5.5rem)',
+            color: 'white',
+            lineHeight: 0.95,
+            letterSpacing: '0.01em',
+            marginBottom: '1rem',
+          }}>
+            {project.titre}
+          </h1>
+
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '1rem',
+            color: 'rgba(255,255,255,0.5)',
+            maxWidth: '680px',
+            lineHeight: 1.7,
+          }}>
+            {project.description}
+          </p>
         </div>
 
         {/* Thumbnails */}
         {project.images.length > 1 && (
-          <div className="bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 px-3 sm:px-4 py-3 sm:py-4 mt-4 sm:mt-6 rounded-lg">
-            <p className="text-xs text-zinc-500 mb-2 sm:mb-3 font-medium uppercase tracking-wide">
-              Galerie ({project.images.length} images)
+          <div style={{
+            borderTop: '1px solid rgba(255,255,255,0.07)',
+            paddingTop: '1.25rem',
+            paddingBottom: '1.5rem',
+          }}>
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.65rem',
+              fontWeight: 600,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.3)',
+              marginBottom: '0.75rem',
+            }}>
+              Galerie — {project.images.length} images
             </p>
-            <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-zinc-900">
+            <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1">
               {project.images.map((image, index) => (
                 <button
                   key={index}
                   onClick={() => handleThumbnailClick(index)}
-                  className={`flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
-                    currentImageIndex === index
-                      ? "border-zinc-100 ring-2 ring-zinc-100/30 shadow-lg scale-105"
-                      : "border-zinc-700 hover:border-zinc-500 hover:scale-105"
-                  }`}
                   aria-label={`Voir image ${index + 1}`}
-                  aria-current={currentImageIndex === index ? "true" : "false"}
+                  aria-current={currentImageIndex === index ? 'true' : 'false'}
+                  style={{
+                    flexShrink: 0,
+                    width: '80px',
+                    height: '60px',
+                    overflow: 'hidden',
+                    border: `2px solid ${currentImageIndex === index ? 'white' : 'rgba(255,255,255,0.12)'}`,
+                    opacity: currentImageIndex === index ? 1 : 0.6,
+                    transition: 'all 0.2s ease',
+                    cursor: 'pointer',
+                    padding: 0,
+                  }}
                 >
                   <img
                     src={urlFor(image).url()}

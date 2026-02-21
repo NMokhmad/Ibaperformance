@@ -1,80 +1,140 @@
 import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Calendar, Clock, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export default function BlogCard({ article, index, onClick }) {
+export default function BlogCard({ article, index }) {
   return (
-    <Link to={`/Blog/${article.slug}`}>
+    <Link to={`/Blog/${article.slug}`} style={{ display: 'block' }}>
       <motion.article
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: index * 0.1 }}
-        onClick={onClick}
-        className="group relative overflow-hidden rounded-2xl cursor-pointer bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-all duration-300"
+        transition={{ duration: 0.5, delay: index * 0.06 }}
+        className="group"
+        style={{
+          background: '#111113',
+          border: '1px solid rgba(255,255,255,0.07)',
+          cursor: 'pointer',
+          transition: 'border-color 0.25s ease',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+        onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)'}
+        onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'}
       >
         {/* Image */}
-        <div className="relative aspect-[16/10] overflow-hidden">
+        <div style={{ position: 'relative', aspectRatio: '16/10', overflow: 'hidden' }}>
           <img
             src={article.image}
             alt={article.title}
             loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              transition: 'transform 0.7s ease',
+            }}
+            className="group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to top, rgba(10,10,12,0.7) 0%, transparent 60%)',
+          }} />
 
-          {/* Category Badge */}
-          <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
-            <Badge className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-700 text-zinc-200 text-xs">
-              {article.categoryLabel}
-            </Badge>
+          {/* Category */}
+          <div style={{
+            position: 'absolute',
+            top: '0.875rem',
+            left: '0.875rem',
+            background: 'rgba(10,10,12,0.85)',
+            backdropFilter: 'blur(6px)',
+            border: '1px solid rgba(255,255,255,0.12)',
+            padding: '0.25rem 0.65rem',
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.6rem',
+            fontWeight: 600,
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.65)',
+          }}>
+            {article.categoryLabel}
+          </div>
+
+          {/* Arrow icon on hover */}
+          <div style={{
+            position: 'absolute',
+            top: '0.875rem',
+            right: '0.875rem',
+            opacity: 0,
+            transition: 'opacity 0.2s ease',
+          }}
+          className="group-hover:opacity-100">
+            <ArrowUpRight style={{
+              width: '18px',
+              height: '18px',
+              color: 'white',
+            }} />
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-4 sm:p-6">
-          <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-zinc-200 transition-colors line-clamp-2 leading-tight">
-            {article.title}
+        <div style={{
+          padding: '1.25rem',
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 1,
+        }}>
+          <h3 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(1.2rem, 2vw, 1.55rem)',
+            color: 'white',
+            lineHeight: 1.0,
+            letterSpacing: '0.02em',
+            marginBottom: '0.75rem',
+          }}>
+            {article.title.toUpperCase()}
           </h3>
 
-          <p className="text-xs sm:text-sm text-zinc-400 mb-3 sm:mb-4 line-clamp-3 leading-relaxed">
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.825rem',
+            color: 'rgba(255,255,255,0.45)',
+            lineHeight: 1.65,
+            marginBottom: '1.25rem',
+            flex: 1,
+            display: '-webkit-box',
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+          }}>
             {article.excerpt}
           </p>
 
-          {/* Meta Info */}
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs text-zinc-500 mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-zinc-800">
-            <div className="flex items-center gap-1.5">
-              <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-              <span className="text-xs">{article.date}</span>
+          {/* Meta */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+            paddingTop: '0.875rem',
+            borderTop: '1px solid rgba(255,255,255,0.06)',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+              <Calendar style={{ width: '11px', height: '11px', color: 'rgba(255,255,255,0.25)', flexShrink: 0 }} />
+              <span style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.7rem',
+                color: 'rgba(255,255,255,0.3)',
+              }}>{article.date}</span>
             </div>
-            <div className="flex items-center gap-1.5">
-              <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-              <span className="text-xs">{article.readTime}</span>
-            </div>
-          </div>
-
-          {/* Tags */}
-          {article.tags && article.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
-              {article.tags.slice(0, 2).map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-2 py-1 bg-zinc-800 text-zinc-400 text-xs rounded-md hover:bg-zinc-700 transition-colors"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Read More Link */}
-          <div className="flex items-center justify-between">
-            <span className="text-xs sm:text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">
-              Lire l'article
-            </span>
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-zinc-800 flex items-center justify-center group-hover:bg-zinc-700 transition-colors flex-shrink-0">
-              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-zinc-400 group-hover:translate-x-0.5 transition-transform" />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+              <Clock style={{ width: '11px', height: '11px', color: 'rgba(255,255,255,0.25)', flexShrink: 0 }} />
+              <span style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.7rem',
+                color: 'rgba(255,255,255,0.3)',
+              }}>{article.readTime}</span>
             </div>
           </div>
         </div>

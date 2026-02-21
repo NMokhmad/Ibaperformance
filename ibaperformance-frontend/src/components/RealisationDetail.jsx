@@ -3,7 +3,6 @@ import { useRealisation } from "../hooks/useRealisation.js";
 import { useImageCarousel } from "../hooks/useImageCarousel.js";
 import { LoadingState } from "./common/LoadingState.jsx";
 import { ErrorState } from "./common/ErrorState.jsx";
-import { Button } from "./ui/button.jsx";
 import { RealisationDetailHero } from "./realisations/RealisationDetailHero.jsx";
 import { RealisationDetailContent } from "./realisations/RealisationDetailContent.jsx";
 import { RealisationDetailSidebar } from "./realisations/RealisationDetailSidebar.jsx";
@@ -34,17 +33,29 @@ export default function RealisationDetail() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-zinc-950 pt-20 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-white mb-4">
-            Réalisation non trouvée
+      <div className="min-h-screen pt-20 flex items-center justify-center"
+        style={{ background: 'var(--color-charcoal)' }}>
+        <div style={{ textAlign: 'center' }}>
+          <h1 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: '2rem',
+            color: 'white',
+            letterSpacing: '0.02em',
+            marginBottom: '0.75rem',
+          }}>
+            RÉALISATION NON TROUVÉE
           </h1>
-          <p className="text-zinc-400 mb-6">
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.875rem',
+            color: 'rgba(255,255,255,0.4)',
+            marginBottom: '2rem',
+          }}>
             Cette réalisation n'existe pas ou a été supprimée.
           </p>
-          <Button onClick={() => navigate("/realisations")}>
+          <button onClick={() => navigate("/realisations")} className="btn-racing">
             Retour aux réalisations
-          </Button>
+          </button>
         </div>
       </div>
     );
@@ -56,7 +67,7 @@ export default function RealisationDetail() {
     <>
       <SEO {...seoData} />
 
-      <div className="bg-zinc-950 pt-20">
+      <div className="pt-20" style={{ background: 'var(--color-charcoal)' }}>
         <RealisationDetailHero
           project={project}
           currentImageIndex={currentIndex}
@@ -65,7 +76,7 @@ export default function RealisationDetail() {
           onBack={() => navigate(createPageUrl("Realisations"))}
           />
 
-        <section className="py-16 bg-zinc-950">
+        <section className="py-16" style={{ background: 'var(--color-charcoal)' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-3 gap-12">
               <RealisationDetailContent project={project} />

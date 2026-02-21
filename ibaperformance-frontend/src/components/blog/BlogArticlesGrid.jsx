@@ -1,41 +1,44 @@
 import { memo } from "react";
 import BlogCard from "./BlogCard";
 
-const EmptyState = memo(() => {
-  return (
-    <div className="text-center py-16">
-      <p className="text-zinc-500 text-lg">Aucun article trouvé dans cette catégorie.</p>
-    </div>
-  );
-});
+const EmptyState = memo(() => (
+  <div style={{ textAlign: 'center', padding: '5rem 0' }}>
+    <p style={{
+      fontFamily: 'var(--font-body)',
+      fontSize: '0.95rem',
+      color: 'rgba(255,255,255,0.3)',
+    }}>
+      Aucun article trouvé dans cette catégorie.
+    </p>
+  </div>
+));
 
-export const BlogArticlesGrid = memo(({ 
-  articles, 
-  onArticleClick, 
-}) => {
-  if (articles.length === 0) {
-    return (
-      <section className="py-16 bg-zinc-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+export const BlogArticlesGrid = memo(({ articles, onArticleClick }) => {
+  return (
+    <section style={{
+      background: 'var(--color-charcoal)',
+      paddingTop: '3rem',
+      paddingBottom: '4rem',
+    }}>
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        {articles.length === 0 ? (
           <EmptyState />
-        </div>
-      </section>
-    );
-  }
-
-  return (
-    <section className="py-16 bg-zinc-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {articles.map((article, index) => (
-            <BlogCard
-              key={article.id}
-              article={article}
-              index={index}
-              onClick={() => onArticleClick(article)}
-            />
-          ))}
-        </div>
+        ) : (
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px"
+            style={{ background: 'rgba(255,255,255,0.07)' }}
+          >
+            {articles.map((article, index) => (
+              <div key={article.id} style={{ background: 'var(--color-charcoal)' }}>
+                <BlogCard
+                  article={article}
+                  index={index}
+                  onClick={() => onArticleClick(article)}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

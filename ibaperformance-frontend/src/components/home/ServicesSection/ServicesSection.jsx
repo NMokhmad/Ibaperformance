@@ -10,7 +10,7 @@ export const ServicesSection = memo(() => {
 
   if (loading) {
     return (
-      <section className="relative py-24 bg-zinc-50">
+      <section className="relative py-24 bg-[#F5F4F1]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <LoadingState message="Chargement des services..." />
         </div>
@@ -20,7 +20,7 @@ export const ServicesSection = memo(() => {
 
   if (error) {
     return (
-      <section className="relative py-24 bg-zinc-50">
+      <section className="relative py-24 bg-[#F5F4F1]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ErrorState message={error} showRetry={false} />
         </div>
@@ -29,7 +29,7 @@ export const ServicesSection = memo(() => {
   }
 
   return (
-    <section id="services" className="relative py-24 bg-zinc-50">
+    <section id="services" className="relative py-24 bg-[#F5F4F1]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ServicesHeader />
 
@@ -41,7 +41,7 @@ export const ServicesSection = memo(() => {
 
         {services.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-zinc-500">Aucun service disponible pour le moment.</p>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'rgba(0,0,0,0.4)' }}>Aucun service disponible pour le moment.</p>
           </div>
         )}
       </div>

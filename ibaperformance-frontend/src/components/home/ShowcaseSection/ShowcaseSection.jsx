@@ -11,7 +11,7 @@ export const ShowcaseSection = memo(() => {
 
   if (loading) {
     return (
-      <section className="relative py-24 bg-zinc-950">
+      <section className="relative py-24" style={{ background: 'var(--color-charcoal)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <LoadingState message="Chargement des réalisations..." />
         </div>
@@ -21,7 +21,7 @@ export const ShowcaseSection = memo(() => {
 
   if (error) {
     return (
-      <section className="relative py-24 bg-zinc-950">
+      <section className="relative py-24" style={{ background: 'var(--color-charcoal)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ErrorState message={error} showRetry={false} />
         </div>
@@ -30,7 +30,7 @@ export const ShowcaseSection = memo(() => {
   }
 
   return (
-    <section id="realisations" className="relative py-24 bg-zinc-950">
+    <section id="realisations" className="relative py-24" style={{ background: 'var(--color-charcoal)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ShowcaseHeader />
 

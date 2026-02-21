@@ -1,10 +1,32 @@
 import { memo, useState, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
+
+const inputStyle = {
+  width: '100%',
+  padding: '0.65rem 0.875rem',
+  background: 'rgba(255,255,255,0.04)',
+  border: '1px solid rgba(255,255,255,0.1)',
+  color: 'white',
+  fontFamily: 'var(--font-body)',
+  fontSize: '0.875rem',
+  outline: 'none',
+  transition: 'border-color 0.2s ease',
+};
+
+const labelStyle = {
+  display: 'block',
+  fontFamily: 'var(--font-body)',
+  fontSize: '0.65rem',
+  fontWeight: 600,
+  letterSpacing: '0.15em',
+  textTransform: 'uppercase',
+  color: 'rgba(255,255,255,0.4)',
+  marginBottom: '0.5rem',
+};
+
+const handleFocus = (e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; };
+const handleBlur = (e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; };
 
 export const ContactForm = memo(() => {
   const [formStatus, setFormStatus] = useState({ type: "", message: "" });
@@ -29,7 +51,7 @@ export const ContactForm = memo(() => {
         type: "success",
         message: "Merci ! Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.",
       });
-      
+
       formRef.current.reset();
     } catch (error) {
       console.error("Erreur EmailJS:", error);
@@ -43,93 +65,116 @@ export const ContactForm = memo(() => {
   };
 
   return (
-    <form 
+    <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 space-y-6"
+      style={{
+        background: 'rgba(255,255,255,0.03)',
+        border: '1px solid rgba(255,255,255,0.06)',
+        padding: '2.5rem',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1.25rem',
+      }}
     >
-      {/* Message de statut */}
+      {/* Status message */}
       {formStatus.message && (
-        <div className={`p-4 rounded-lg flex items-start gap-3 ${
-          formStatus.type === "success" 
-            ? "bg-green-900/20 border border-green-800" 
-            : "bg-red-900/20 border border-red-800"
-        }`}>
+        <div style={{
+          padding: '1rem',
+          display: 'flex',
+          alignItems: 'flex-start',
+          gap: '0.75rem',
+          background: formStatus.type === "success" ? 'rgba(34,197,94,0.08)' : 'rgba(255,255,255,0.05)',
+          borderLeft: `3px solid ${formStatus.type === "success" ? '#22c55e' : 'rgba(255,255,255,0.4)'}`,
+        }}>
           {formStatus.type === "success" ? (
-            <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+            <CheckCircle style={{ width: '18px', height: '18px', color: '#4ade80', flexShrink: 0, marginTop: '2px' }} />
           ) : (
-            <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+            <AlertCircle style={{ width: '18px', height: '18px', color: 'rgba(255,255,255,0.5)', flexShrink: 0, marginTop: '2px' }} />
           )}
-          <p className={`text-sm ${
-            formStatus.type === "success" ? "text-green-300" : "text-red-300"
-          }`}>
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.875rem',
+            color: formStatus.type === "success" ? '#86efac' : 'rgba(255,255,255,0.7)',
+            lineHeight: 1.5,
+          }}>
             {formStatus.message}
           </p>
         </div>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div className="space-y-2">
-          <Label htmlFor="from_name" className="text-zinc-300">Nom complet *</Label>
-          <Input
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor="from_name" style={labelStyle}>Nom complet *</label>
+          <input
             id="from_name"
             name="from_name"
             required
-            className="bg-zinc-800 border-zinc-700 text-white focus:border-zinc-600"
             placeholder="Jean Dupont"
+            style={inputStyle}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
           />
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="phone" className="text-zinc-300">Téléphone *</Label>
-          <Input
+        <div>
+          <label htmlFor="phone" style={labelStyle}>Téléphone *</label>
+          <input
             id="phone"
             name="phone"
             type="tel"
             required
-            className="bg-zinc-800 border-zinc-700 text-white focus:border-zinc-600"
             placeholder="+33 6 12 34 56 78"
+            style={inputStyle}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
           />
         </div>
       </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="from_email" className="text-zinc-300">Email *</Label>
-        <Input
+      <div>
+        <label htmlFor="from_email" style={labelStyle}>Email *</label>
+        <input
           id="from_email"
           name="from_email"
           type="email"
           required
-          className="bg-zinc-800 border-zinc-700 text-white focus:border-zinc-600"
           placeholder="jean.dupont@email.com"
-        />
-      </div>
-      
-      <div className="space-y-2">
-        <Label htmlFor="message" className="text-zinc-300">Votre message *</Label>
-        <Textarea
-          id="message"
-          name="message"
-          required
-          className="bg-zinc-800 border-zinc-700 text-white focus:border-zinc-600 min-h-32"
-          placeholder="Décrivez-nous votre projet, votre véhicule et vos objectifs de performance..."
+          style={inputStyle}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
       </div>
 
-      <Button
+      <div>
+        <label htmlFor="message" style={labelStyle}>Votre message *</label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows={5}
+          placeholder="Décrivez-nous votre projet, votre véhicule et vos objectifs de performance..."
+          style={{ ...inputStyle, resize: 'vertical', minHeight: '128px' }}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+        />
+      </div>
+
+      <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold text-lg py-6 shadow-xl group disabled:opacity-50 disabled:cursor-not-allowed"
+        className="btn-racing w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+        style={{ fontSize: '0.875rem', paddingTop: '1rem', paddingBottom: '1rem' }}
       >
         {isSubmitting ? (
-          <>Envoi en cours...</>
+          'Envoi en cours...'
         ) : (
           <>
             Envoyer ma demande
-            <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            <Send style={{ width: '16px', height: '16px' }} />
           </>
         )}
-      </Button>
+      </button>
     </form>
   );
 });

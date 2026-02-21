@@ -1,28 +1,51 @@
 import { memo } from "react";
 import { Phone, Mail } from "lucide-react";
 
+const labelStyle = {
+  fontFamily: 'var(--font-body)',
+  fontSize: '0.65rem',
+  fontWeight: 600,
+  letterSpacing: '0.15em',
+  textTransform: 'uppercase',
+  color: 'rgba(255,255,255,0.4)',
+  marginBottom: '1rem',
+  display: 'block',
+};
+
+const linkStyle = {
+  fontFamily: 'var(--font-body)',
+  fontSize: '0.825rem',
+  color: 'rgba(255,255,255,0.45)',
+  textDecoration: 'none',
+  transition: 'color 0.2s ease',
+};
+
 export const FooterContact = memo(({ settings }) => {
   return (
     <div>
-      <h4 className="text-sm font-semibold mb-4 text-zinc-200">Contact</h4>
-      <ul className="space-y-3">
+      <span style={labelStyle}>Contact</span>
+      <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', listStyle: 'none', padding: 0, margin: 0 }}>
         {settings?.telephone && (
-          <li className="flex items-center gap-2 text-sm text-zinc-400">
-            <Phone className="w-4 h-4" />
-            <a 
+          <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Phone style={{ width: '13px', height: '13px', color: 'rgba(255,255,255,0.25)', flexShrink: 0 }} />
+            <a
               href={`tel:${settings.telephone.replace(/\s/g, "")}`}
-              className="hover:text-zinc-200 transition-colors"
+              style={linkStyle}
+              onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.75)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.45)'}
             >
               {settings.telephone}
             </a>
           </li>
         )}
         {settings?.email && (
-          <li className="flex items-center gap-2 text-sm text-zinc-400">
-            <Mail className="w-4 h-4" />
-            <a 
+          <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Mail style={{ width: '13px', height: '13px', color: 'rgba(255,255,255,0.25)', flexShrink: 0 }} />
+            <a
               href={`mailto:${settings.email}`}
-              className="hover:text-zinc-200 transition-colors"
+              style={linkStyle}
+              onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.75)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.45)'}
             >
               {settings.email}
             </a>

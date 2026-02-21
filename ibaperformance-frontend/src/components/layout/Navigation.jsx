@@ -8,10 +8,31 @@ export const Navigation = memo(() => {
         <a
           key={item.title}
           href={item.url}
-          className="text-sm font-medium text-zinc-300 hover:text-white transition-colors duration-200 relative group"
+          style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.75rem',
+            fontWeight: 600,
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.6)',
+            textDecoration: 'none',
+            position: 'relative',
+            transition: 'color 0.2s ease',
+          }}
+          className="group"
+          onMouseEnter={e => e.currentTarget.style.color = 'white'}
+          onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}
         >
           {item.title}
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-zinc-300 to-zinc-500 group-hover:w-full transition-all duration-300" />
+          <span style={{
+            position: 'absolute',
+            bottom: '-3px',
+            left: 0,
+            width: '0%',
+            height: '1px',
+            background: 'rgba(255,255,255,0.6)',
+            transition: 'width 0.3s ease',
+          }} className="group-hover:w-full" />
         </a>
       ))}
     </nav>

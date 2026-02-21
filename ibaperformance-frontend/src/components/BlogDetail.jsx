@@ -1,6 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { useBlogArticle } from "../hooks/useBlogArticle";
 import { useImageCarousel } from "../hooks/useImageCarousel";
 import { BlogDetailHero } from "./blogDetail/BlogDetailHero";
@@ -20,22 +19,39 @@ export default function BlogDetail() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 pt-20 flex items-center justify-center">
-        <p className="text-zinc-400">Chargement de l'article...</p>
+      <div className="min-h-screen pt-20 flex items-center justify-center"
+        style={{ background: 'var(--color-charcoal)' }}>
+        <p style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: '0.9rem',
+          color: 'rgba(255,255,255,0.35)',
+        }}>
+          Chargement de l'article...
+        </p>
       </div>
     );
   }
 
   if (error || !article) {
     return (
-      <div className="min-h-screen bg-zinc-950 pt-20 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-white mb-4">
-            {error || "Article non trouvé"}
+      <div className="min-h-screen pt-20 flex items-center justify-center"
+        style={{ background: 'var(--color-charcoal)' }}>
+        <div style={{ textAlign: 'center' }}>
+          <h1 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: '2rem',
+            color: 'white',
+            marginBottom: '1.5rem',
+            letterSpacing: '0.02em',
+          }}>
+            {error || "ARTICLE NON TROUVÉ"}
           </h1>
-          <Button variant="default" onClick={() => navigate("/blog")}>
+          <button
+            onClick={() => navigate("/blog")}
+            className="btn-racing"
+          >
             Retour au blog
-          </Button>
+          </button>
         </div>
       </div>
     );
@@ -45,25 +61,28 @@ export default function BlogDetail() {
 
   return (
     <>
-
       <SEO {...seoData} />
 
-      <div className="min-h-screen bg-zinc-950 pt-20">
+      <div className="min-h-screen pt-20" style={{ background: 'var(--color-charcoal)' }}>
         <BlogDetailHero
           article={article}
           currentImageIndex={currentIndex}
           onNext={next}
           onPrevious={previous}
           onBack={() => navigate("/blog")}
-          />
+        />
 
-        <section className="py-16 bg-zinc-950">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section style={{
+          background: 'var(--color-charcoal)',
+          paddingTop: '3.5rem',
+          paddingBottom: '4rem',
+        }}>
+          <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
             <motion.article
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              >
+            >
               <BlogArticleHeader article={article} />
               <BlogArticleContent content={article.content} />
             </motion.article>
@@ -73,7 +92,7 @@ export default function BlogDetail() {
         <RelatedArticles
           articles={relatedArticles}
           onArticleClick={(slug) => navigate(`/blog/${slug}`)}
-          />
+        />
       </div>
     </>
   );

@@ -43,7 +43,7 @@ export default function RealisationsPage() {
     <>
     <SEO {...seoConfig.pages.realisations} />
     
-        <div className="min-h-screen bg-zinc-950 pt-20">
+        <div className="min-h-screen pt-20" style={{ background: 'var(--color-charcoal)' }}>
         <RealisationsHero 
             projectsCount={projects.length} 
             totalPower={totalPower} 

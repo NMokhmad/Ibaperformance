@@ -1,82 +1,177 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+
+const SidebarBlock = ({ children, style }) => (
+  <div style={{
+    background: 'rgba(255,255,255,0.03)',
+    border: '1px solid rgba(255,255,255,0.08)',
+    padding: '1.25rem',
+    ...style,
+  }}>
+    {children}
+  </div>
+);
+
+const BlockLabel = ({ children }) => (
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.6rem',
+    marginBottom: '1rem',
+  }}>
+    <div style={{ width: '18px', height: '2px', background: 'rgba(255,255,255,0.45)' }} />
+    <span style={{
+      fontFamily: 'var(--font-body)',
+      fontSize: '0.65rem',
+      fontWeight: 600,
+      letterSpacing: '0.18em',
+      textTransform: 'uppercase',
+      color: 'rgba(255,255,255,0.45)',
+    }}>
+      {children}
+    </span>
+  </div>
+);
 
 export const RealisationDetailSidebar = memo(({ project }) => {
+  const powerGain = parseInt(project.after) - parseInt(project.before);
+  const torqueGain = parseInt(project.afterTorque) - parseInt(project.beforeTorque);
+  const pctGain = Math.round((powerGain / parseInt(project.before)) * 100);
+
   return (
     <div className="lg:col-span-1">
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="lg:sticky lg:top-24 space-y-4 sm:space-y-6"
+        className="lg:sticky lg:top-24 space-y-3"
       >
         {/* Technical Data */}
         {project.technicalData && Object.keys(project.technicalData).length > 0 && (
-          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-4 sm:p-6 hover:border-zinc-700 transition-colors">
-            <h3 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
-              <span className="w-1 h-5 bg-zinc-500 rounded-full"></span>
-              Caractéristiques techniques
-            </h3>
-            <div className="space-y-3 sm:space-y-4">
-              {Object.entries(project.technicalData).map(([key, value]) => (
-                <div key={key} className="border-b border-zinc-800 last:border-0 pb-3 last:pb-0 hover:bg-zinc-800/30 -mx-2 px-2 rounded transition-colors">
-                  <div className="text-xs text-zinc-500 mb-1 capitalize tracking-wide font-medium">
-                    {key.replace("_", " ")}
+          <SidebarBlock>
+            <BlockLabel>Caractéristiques techniques</BlockLabel>
+            <div>
+              {Object.entries(project.technicalData).map(([key, value], i, arr) => (
+                <div
+                  key={key}
+                  style={{
+                    paddingBottom: i < arr.length - 1 ? '0.75rem' : 0,
+                    marginBottom: i < arr.length - 1 ? '0.75rem' : 0,
+                    borderBottom: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+                  }}
+                >
+                  <div style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.65rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(255,255,255,0.3)',
+                    marginBottom: '2px',
+                  }}>
+                    {key.replace(/_/g, ' ')}
                   </div>
-                  <div className="text-sm sm:text-base text-white font-medium">{value}</div>
+                  <div style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.875rem',
+                    color: 'rgba(255,255,255,0.75)',
+                    fontWeight: 500,
+                  }}>
+                    {value}
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
+          </SidebarBlock>
         )}
 
-        {/* Gain Summary */}
-        <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl p-4 sm:p-6 hover:border-green-500/40 transition-colors shadow-lg shadow-green-500/5">
-          <h3 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
-            <span className="w-1 h-5 bg-green-500 rounded-full"></span>
-            Gains obtenus
-          </h3>
-          <div className="space-y-3">
-            <div className="flex items-center justify-between bg-green-500/5 p-3 rounded-lg">
-              <span className="text-xs sm:text-sm text-zinc-400 font-medium">Puissance</span>
-              <span className="text-base sm:text-lg font-bold text-green-400">
-                +{parseInt(project.after) - parseInt(project.before)} ch
+        {/* Gains */}
+        <SidebarBlock>
+          <BlockLabel>Gains obtenus</BlockLabel>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            {[
+              { label: 'Puissance', value: `+${powerGain} ch` },
+              { label: 'Couple', value: `+${torqueGain} Nm` },
+            ].map(({ label, value }) => (
+              <div
+                key={label}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: '0.625rem 0.75rem',
+                  background: 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                }}
+              >
+                <span style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.75rem',
+                  color: 'rgba(255,255,255,0.45)',
+                  fontWeight: 500,
+                }}>
+                  {label}
+                </span>
+                <span style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.3rem',
+                  color: 'white',
+                  letterSpacing: '0.04em',
+                }}>
+                  {value}
+                </span>
+              </div>
+            ))}
+
+            {/* Total % gain */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '0.75rem',
+              background: 'rgba(255,255,255,0.07)',
+              borderTop: '1px solid rgba(255,255,255,0.15)',
+            }}>
+              <span style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.75rem',
+                color: 'rgba(255,255,255,0.55)',
+                fontWeight: 600,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+              }}>
+                Augmentation
               </span>
-            </div>
-            <div className="flex items-center justify-between bg-green-500/5 p-3 rounded-lg">
-              <span className="text-xs sm:text-sm text-zinc-400 font-medium">Couple</span>
-              <span className="text-base sm:text-lg font-bold text-green-400">
-                +{parseInt(project.afterTorque) - parseInt(project.beforeTorque)} Nm
-              </span>
-            </div>
-            <div className="flex items-center justify-between pt-3 border-t border-green-500/20 bg-green-500/10 p-3 rounded-lg">
-              <span className="text-xs sm:text-sm text-zinc-400 font-medium">Augmentation</span>
-              <span className="text-lg sm:text-xl font-bold text-green-400">
-                +{Math.round(((parseInt(project.after) - parseInt(project.before)) / parseInt(project.before)) * 100)}%
+              <span style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.6rem',
+                color: 'white',
+                letterSpacing: '0.04em',
+              }}>
+                +{pctGain}%
               </span>
             </div>
           </div>
-        </div>
+        </SidebarBlock>
 
         {/* CTA */}
-        <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-4 sm:p-6 hover:border-zinc-700 transition-colors">
-          <h3 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3 flex items-center gap-2">
-            <span className="w-1 h-5 bg-zinc-500 rounded-full"></span>
-            Un projet similaire ?
-          </h3>
-          <p className="text-xs sm:text-sm text-zinc-400 mb-4 sm:mb-6 leading-relaxed">
-            Contactez-moi pour discuter de votre projet et obtenir des conseils personnalisés
+        <SidebarBlock>
+          <BlockLabel>Un projet similaire ?</BlockLabel>
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.85rem',
+            color: 'rgba(255,255,255,0.45)',
+            lineHeight: 1.6,
+            marginBottom: '1.25rem',
+          }}>
+            Contactez-moi pour discuter de votre projet et obtenir des conseils personnalisés.
           </p>
-          <Button
-            className="w-full bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:from-zinc-200 hover:to-zinc-400 font-semibold shadow-lg hover:shadow-xl transition-all duration-200 text-sm sm:text-base"
-            asChild
-          >
-            <a href="/#contact">
-              Contacter-moi
-            </a>
-          </Button>
-        </div>
+          <a href="/#contact" className="btn-racing w-full justify-center">
+            Me contacter
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </SidebarBlock>
       </motion.div>
     </div>
   );

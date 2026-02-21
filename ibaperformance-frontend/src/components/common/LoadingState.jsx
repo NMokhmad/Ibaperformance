@@ -2,10 +2,21 @@ import { Loader2 } from "lucide-react";
 
 export function LoadingState({ message = "Chargement..." }) {
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20 flex items-center justify-center">
-      <div className="text-center">
-        <Loader2 className="w-12 h-12 text-zinc-400 animate-spin mx-auto mb-4" />
-        <p className="text-zinc-400 text-lg">{message}</p>
+    <div className="min-h-screen pt-20 flex items-center justify-center"
+      style={{ background: 'var(--color-charcoal)' }}>
+      <div style={{ textAlign: 'center' }}>
+        <Loader2 style={{
+          width: '32px',
+          height: '32px',
+          color: 'rgba(255,255,255,0.25)',
+          margin: '0 auto 1rem',
+        }} className="animate-spin" />
+        <p style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: '0.875rem',
+          color: 'rgba(255,255,255,0.35)',
+          letterSpacing: '0.05em',
+        }}>{message}</p>
       </div>
     </div>
   );

@@ -1,36 +1,64 @@
 import { memo } from "react";
-import { Filter } from "lucide-react";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export const RealisationsFilters = memo(({ 
-  categories, 
-  selectedCategory, 
-  onCategoryChange, 
+export const RealisationsFilters = memo(({
+  categories,
+  selectedCategory,
+  onCategoryChange,
 }) => {
   return (
-    <section className="relative py-8 bg-zinc-900 border-y border-zinc-800 sticky top-20 z-40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-4 overflow-x-auto">
-          <div className="flex items-center gap-2 text-zinc-400 shrink-0">
-            <Filter className="w-4 h-4" />
-            <span className="text-sm font-medium">Filtrer :</span>
-          </div>
-          
-          <Tabs value={selectedCategory} onValueChange={onCategoryChange} className="flex-1">
-            <TabsList className="bg-zinc-800 border border-zinc-700 inline-flex">
-              {categories.map(cat => (
-                <TabsTrigger
-                  key={cat.value}
-                  value={cat.value}
-                  className="data-[state=active]:bg-zinc-700 data-[state=active]:text-white text-zinc-400 whitespace-nowrap"
-                >
-                  {cat.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
+    <div
+      style={{
+        background: 'var(--color-charcoal)',
+        borderBottom: '1px solid rgba(255,255,255,0.07)',
+        position: 'sticky',
+        top: '80px',
+        zIndex: 40,
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-4">
+        <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide">
+          {/* Label */}
+          <span style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.65rem',
+            fontWeight: 600,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.28)',
+            flexShrink: 0,
+            marginRight: '0.5rem',
+          }}>
+            Filtrer
+          </span>
+
+          {categories.map((cat) => {
+            const isActive = selectedCategory === cat.value;
+            return (
+              <button
+                key={cat.value}
+                onClick={() => onCategoryChange(cat.value)}
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.7rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  padding: '0.45rem 1rem',
+                  background: isActive ? 'white' : 'transparent',
+                  color: isActive ? '#0A0A0C' : 'rgba(255,255,255,0.42)',
+                  border: `1px solid ${isActive ? 'white' : 'rgba(255,255,255,0.1)'}`,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                }}
+              >
+                {cat.label}
+              </button>
+            );
+          })}
         </div>
       </div>
-    </section>
+    </div>
   );
 });

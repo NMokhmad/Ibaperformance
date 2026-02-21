@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export const ContactInfo = memo(({ contactInfo }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
       {contactInfo.map((info, index) => {
         const Icon = info.icon;
         return (
@@ -14,15 +14,60 @@ export const ContactInfo = memo(({ contactInfo }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-zinc-700 hover:bg-zinc-800 transition-all duration-300 group"
+            className="group"
+            style={{
+              display: 'block',
+              background: 'rgba(255,255,255,0.03)',
+              border: '1px solid rgba(255,255,255,0.07)',
+              padding: '1.25rem',
+              textDecoration: 'none',
+              transition: 'border-color 0.25s ease, background 0.25s ease',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+              e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)';
+              e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
+            }}
           >
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 min-w-[2.5rem] bg-zinc-800 rounded-lg flex items-center justify-center group-hover:bg-zinc-700 transition-colors flex-shrink-0">
-                <Icon className="w-5 h-5 text-zinc-400 flex-shrink-0" />
+              {/* White icon box — icône sombre sur fond blanc */}
+              <div style={{
+                width: '36px',
+                height: '36px',
+                minWidth: '36px',
+                background: 'rgba(255,255,255,0.9)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+              }}>
+                <Icon className="w-4 h-4" style={{ color: '#0A0A0C' }} />
               </div>
+
               <div className="flex-1 min-w-0">
-                <div className="text-sm text-zinc-500 mb-1">{info.title}</div>
-                <div className="text-sm font-medium text-white whitespace-pre-line break-words">
+                <div style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.65rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(255,255,255,0.3)',
+                  marginBottom: '4px',
+                }}>
+                  {info.title}
+                </div>
+                <div style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.85rem',
+                  fontWeight: 500,
+                  color: 'rgba(255,255,255,0.8)',
+                  whiteSpace: 'pre-line',
+                  wordBreak: 'break-word',
+                  lineHeight: 1.5,
+                }}>
                   {info.value}
                 </div>
               </div>

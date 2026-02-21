@@ -1,13 +1,13 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export const ProjectCard = memo(({ project, index }) => {
   const isLarge = index === 0;
 
   return (
-    <Link 
+    <Link
       to={`/realisations/${project.slug}`}
       className="no-underline"
     >
@@ -16,7 +16,7 @@ export const ProjectCard = memo(({ project, index }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: index * 0.1 }}
-        className={`group relative overflow-hidden rounded-2xl cursor-pointer h-full ${
+        className={`group relative overflow-hidden cursor-pointer h-full ${
           isLarge ? "md:col-span-2 md:row-span-2" : ""
         }`}
       >
@@ -28,42 +28,101 @@ export const ProjectCard = memo(({ project, index }) => {
               src={project.image}
               alt={project.title}
               loading="lazy"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
           ) : (
-            <div className="w-full h-full bg-zinc-800 flex items-center justify-center">
-              <span className="text-zinc-600">Image non disponible</span>
+            <div className="w-full h-full flex items-center justify-center" style={{ background: '#1A1A1C' }}>
+              <span style={{ color: '#4B5563', fontFamily: 'var(--font-body)', fontSize: '0.85rem' }}>
+                Image non disponible
+              </span>
             </div>
           )}
-          
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
-          
+
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 transition-opacity duration-300"
+            style={{
+              background: 'linear-gradient(to top, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0.5) 40%, transparent 100%)',
+              opacity: 0.85,
+            }}
+          />
+
+          {/* Arrow icon - top right on hover */}
+          <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div style={{
+              width: '36px',
+              height: '36px',
+              background: 'var(--color-racing-red)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <ArrowUpRight className="w-4 h-4 text-white" />
+            </div>
+          </div>
+
           {/* Content Overlay */}
-          <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end">
-            <span className="text-xs font-medium text-zinc-400 mb-1.5 sm:mb-2 capitalize">
+          <div className="absolute inset-0 p-5 sm:p-6 flex flex-col justify-end">
+            {/* Category */}
+            <span style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.65rem',
+              fontWeight: 600,
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              color: 'var(--color-racing-red)',
+              marginBottom: '6px',
+              display: 'block',
+            }}>
               {project.category}
             </span>
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-1.5 sm:mb-2 leading-tight">
-              {project.title}
+
+            {/* Title */}
+            <h3
+              className="mb-2 leading-tight"
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: isLarge ? 'clamp(1.8rem, 3.5vw, 2.5rem)' : 'clamp(1.4rem, 2.5vw, 1.8rem)',
+                color: 'white',
+                lineHeight: 1.0,
+                letterSpacing: '0.01em',
+              }}
+            >
+              {project.title.toUpperCase()}
             </h3>
-            <p className="text-xs sm:text-sm text-zinc-300 mb-3 sm:mb-4 line-clamp-2 leading-relaxed">
+
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.8rem',
+              color: 'rgba(255,255,255,0.5)',
+              lineHeight: 1.6,
+              marginBottom: '14px',
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+            }}>
               {project.description}
             </p>
 
-            {/* Before/After Stats */}
-            <div className="flex items-center gap-3 sm:gap-4 bg-zinc-900/80 backdrop-blur-sm rounded-lg p-2.5 sm:p-3 w-fit shadow-lg">
-              <div>
-                <div className="text-xs text-zinc-500">Avant</div>
-                <div className="text-base sm:text-lg font-bold text-white">
-                  {project.before}ch
-                </div>
+            {/* Before/After Stats - industrial style */}
+            <div className="flex items-stretch gap-0 w-fit">
+              <div style={{
+                background: 'rgba(10,10,12,0.9)',
+                backdropFilter: 'blur(8px)',
+                padding: '8px 14px',
+                borderLeft: '2px solid rgba(255,255,255,0.1)',
+              }}>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.6rem', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '2px' }}>Avant</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1 }}>{project.before}<span style={{ fontSize: '0.7rem', opacity: 0.6 }}>ch</span></div>
               </div>
-              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-500 flex-shrink-0" />
-              <div>
-                <div className="text-xs text-zinc-500">Après</div>
-                <div className="text-base sm:text-lg font-bold bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
-                  {project.after}ch
-                </div>
+              <div style={{
+                background: 'rgba(255,255,255,0.1)',
+                backdropFilter: 'blur(8px)',
+                padding: '8px 14px',
+                borderLeft: '2px solid rgba(255,255,255,0.5)',
+              }}>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.6rem', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '2px' }}>Après</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'white', lineHeight: 1 }}>{project.after}<span style={{ fontSize: '0.7rem', opacity: 0.7 }}>ch</span></div>
               </div>
             </div>
           </div>

@@ -8,9 +8,7 @@ export const MobileMenu = memo(({ isOpen, onClose }) => {
     if (!isOpen) return;
 
     const handleClickOutside = (event) => {
-      // Si le clic est en dehors du menu, on le ferme
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        // Vérifier aussi que ce n'est pas le bouton burger qui a été cliqué
         const burgerButton = event.target.closest('button[aria-label="Toggle mobile menu"]');
         if (!burgerButton) {
           onClose();
@@ -18,11 +16,9 @@ export const MobileMenu = memo(({ isOpen, onClose }) => {
       }
     };
 
-    // Ajouter l'écouteur d'événements
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("touchstart", handleClickOutside);
 
-    // Nettoyer l'écouteur
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("touchstart", handleClickOutside);
@@ -33,25 +29,43 @@ export const MobileMenu = memo(({ isOpen, onClose }) => {
 
   return (
     <>
-      {/* Overlay pour fermer en cliquant en dehors */}
       <div
-        className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+        className="fixed inset-0 z-40 lg:hidden"
+        style={{ background: 'rgba(0,0,0,0.5)' }}
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Menu mobile */}
       <div
         ref={menuRef}
-        className="relative z-50 lg:hidden bg-zinc-900/98 backdrop-blur-md border-t border-zinc-800"
+        className="relative z-50 lg:hidden"
+        style={{
+          background: 'rgba(10,10,12,0.97)',
+          backdropFilter: 'blur(12px)',
+          borderTop: '1px solid rgba(255,255,255,0.07)',
+        }}
       >
-        <div className="px-4 py-6 space-y-4">
+        <div style={{ padding: '1.5rem 1.25rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
           {navigationItems.map((item) => (
             <a
               key={item.title}
               href={item.url}
               onClick={onClose}
-              className="block text-base font-medium text-zinc-300 hover:text-white transition-colors py-2"
+              style={{
+                display: 'block',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.75rem',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.55)',
+                textDecoration: 'none',
+                padding: '0.75rem 0',
+                borderBottom: '1px solid rgba(255,255,255,0.05)',
+                transition: 'color 0.2s ease',
+              }}
+              onMouseEnter={e => e.currentTarget.style.color = 'white'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.55)'}
             >
               {item.title}
             </a>

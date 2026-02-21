@@ -8,16 +8,47 @@ export const ShowcaseHeader = memo(() => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="text-center mb-16"
+      className="mb-16"
     >
-      <div className="inline-flex items-center gap-2 bg-zinc-800 px-4 py-2 rounded-full mb-6">
-        <span className="text-sm font-medium text-zinc-200">Portfolio</span>
+      {/* Eyebrow */}
+      <div className="flex items-center gap-3 mb-5">
+        <div style={{ width: '36px', height: '2px', background: 'rgba(255,255,255,0.55)' }} />
+        <span style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: '0.7rem',
+          fontWeight: 600,
+          letterSpacing: '0.22em',
+          textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.55)',
+        }}>
+          Portfolio
+        </span>
       </div>
-      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-        Mes réalisations
+
+      {/* Title */}
+      <h2
+        className="mb-5"
+        style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: 'clamp(2.8rem, 6vw, 5rem)',
+          color: 'white',
+          lineHeight: 0.95,
+          letterSpacing: '0.01em',
+        }}
+      >
+        MES RÉALISATIONS
+        <br />
+        <span style={{ color: 'rgba(255,255,255,0.2)' }}>EN IMAGES</span>
       </h2>
-      <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-        Découvrez quelques-unes de nos préparations. Chaque projet est unique et 
+
+      <p style={{
+        fontFamily: 'var(--font-body)',
+        fontSize: '1rem',
+        color: 'rgba(255,255,255,0.45)',
+        maxWidth: '500px',
+        lineHeight: 1.7,
+      }}>
+        Découvrez quelques-unes de nos préparations. Chaque projet est unique et
         reflète notre passion pour la performance automobile.
       </p>
     </motion.div>

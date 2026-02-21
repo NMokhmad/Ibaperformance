@@ -1,44 +1,70 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export const RealisationsCTA = memo(() => {
   return (
-    <section className="py-24 bg-zinc-900">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section style={{ background: 'var(--color-charcoal)', paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Prêt à transformer votre véhicule ?
+          {/* Eyebrow */}
+          <div className="flex items-center gap-3 mb-6">
+            <div style={{ width: '36px', height: '2px', background: 'rgba(255,255,255,0.4)' }} />
+            <span style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.7rem',
+              fontWeight: 600,
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.4)',
+            }}>
+              Votre projet
+            </span>
+          </div>
+
+          {/* Title */}
+          <h2
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+              color: 'white',
+              lineHeight: 0.95,
+              letterSpacing: '0.01em',
+              marginBottom: '1.5rem',
+            }}
+          >
+            PRÊT À TRANSFORMER
+            <br />
+            <span style={{ color: 'rgba(255,255,255,0.22)' }}>VOTRE VÉHICULE ?</span>
           </h2>
-          <p className="text-lg text-zinc-400 mb-8 max-w-2xl mx-auto">
-            Contactez-moi pour discuter de votre projet.
+
+          <p
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '1rem',
+              color: 'rgba(255,255,255,0.48)',
+              maxWidth: '480px',
+              lineHeight: 1.7,
+              marginBottom: '2.5rem',
+            }}
+          >
+            Contactez-nous pour discuter de votre projet et obtenir des conseils
+            personnalisés pour votre véhicule.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="default"
-              variant="default"
-              asChild
-            >
-              <a href="/#contact">
-                Me contacter
-                <ChevronRight className="w-5 h-5 ml-2" />
-              </a>
-            </Button>
-            <Button
-              size="default"
-              variant="default"
-              asChild
-            >
-              <a href="/">
-                Retour à l'accueil
-              </a>
-            </Button>
+
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a href="/#contact" className="btn-racing">
+              Me contacter
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a href="/" className="btn-outline-racing">
+              Retour à l'accueil
+            </a>
           </div>
         </motion.div>
       </div>

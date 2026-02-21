@@ -8,16 +8,47 @@ export const ServicesHeader = memo(() => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="text-center mb-16"
+      className="mb-16"
     >
-      <div className="inline-flex items-center gap-2 bg-zinc-200 px-4 py-2 rounded-full mb-6">
-        <span className="text-sm font-medium text-zinc-800">Mes expertises</span>
+      {/* Eyebrow */}
+      <div className="flex items-center gap-3 mb-5">
+        <div style={{ width: '36px', height: '2px', background: 'var(--color-accent-dark)' }} />
+        <span style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: '0.7rem',
+          fontWeight: 600,
+          letterSpacing: '0.22em',
+          textTransform: 'uppercase',
+          color: 'var(--color-accent-dark)',
+        }}>
+          Mes expertises
+        </span>
       </div>
-      <h2 className="text-4xl md:text-5xl font-bold text-zinc-950 mb-6">
-        Services de performance automobile
+
+      {/* Title */}
+      <h2
+        className="mb-5"
+        style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: 'clamp(2.8rem, 6vw, 5rem)',
+          color: '#0F0F11',
+          lineHeight: 0.95,
+          letterSpacing: '0.01em',
+        }}
+      >
+        SERVICES DE PERFORMANCE
+        <br />
+        <span style={{ color: 'rgba(15,15,17,0.3)' }}>AUTOMOBILE</span>
       </h2>
-      <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
-        Des solutions sur mesure pour optimiser les performances de votre véhicule, 
+
+      <p style={{
+        fontFamily: 'var(--font-body)',
+        fontSize: '1rem',
+        color: '#6B7280',
+        maxWidth: '520px',
+        lineHeight: 1.7,
+      }}>
+        Des solutions sur mesure pour optimiser les performances de votre véhicule,
         de la simple reprogrammation à la préparation complète circuit.
       </p>
     </motion.div>

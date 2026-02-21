@@ -1,9 +1,9 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const ServiceCard = memo(({ service, index }) => {
   const Icon = service.icon;
+  const num = String(index + 1).padStart(2, '0');
 
   return (
     <motion.div
@@ -11,34 +11,119 @@ export const ServiceCard = memo(({ service, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="h-full"
     >
-      <Card className="h-full bg-white border-zinc-200 hover:border-zinc-300 transition-all duration-300 group hover:shadow-xl overflow-hidden">
-        <CardHeader className="relative p-4 sm:p-6">
-          <div className={`absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br ${service.color} opacity-10 rounded-bl-full group-hover:scale-150 transition-transform duration-500`} />
-          <div className="flex items-start justify-between mb-3 sm:mb-4">
-            <div className={`w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
+      <div
+        className="h-full group relative overflow-hidden"
+        style={{
+          background: 'white',
+          border: '1px solid #E5E4E0',
+          transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.borderColor = '#1A1918';
+          e.currentTarget.style.boxShadow = '0 20px 60px rgba(0,0,0,0.07), 0 4px 20px rgba(0,0,0,0.05)';
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.borderColor = '#E5E4E0';
+          e.currentTarget.style.boxShadow = 'none';
+        }}
+      >
+        {/* Dark left border accent on hover */}
+        <div
+          className="absolute left-0 top-0 bottom-0"
+          style={{
+            width: '3px',
+            background: 'var(--color-accent-dark)',
+            transform: 'scaleY(0)',
+            transformOrigin: 'top',
+            transition: 'transform 0.35s ease',
+          }}
+          ref={el => {
+            if (el) {
+              const parent = el.parentElement;
+              parent.addEventListener('mouseenter', () => { el.style.transform = 'scaleY(1)'; });
+              parent.addEventListener('mouseleave', () => { el.style.transform = 'scaleY(0)'; });
+            }
+          }}
+        />
+
+        <div className="p-6 sm:p-8">
+          {/* Number + Icon row */}
+          <div className="flex items-start justify-between mb-6">
+            {/* Large number */}
+            <span style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '4rem',
+              color: '#ECEAE4',
+              lineHeight: 1,
+              letterSpacing: '0.02em',
+              userSelect: 'none',
+              transition: 'color 0.3s ease',
+            }}
+              className="group-hover:text-[#D8D5CE]"
+            >
+              {num}
+            </span>
+
+            {/* Icon */}
+            <div
+              className={`w-12 h-12 sm:w-14 sm:h-14 bg-linear-to-br ${service.color} flex items-center justify-center shadow-md`}
+              style={{ flexShrink: 0 }}
+            >
               <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
             </div>
           </div>
-          <CardTitle className="text-xl sm:text-2xl text-zinc-950">{service.title}</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6 pt-0">
-          <p className="text-sm sm:text-base text-zinc-600 leading-relaxed">
+
+          {/* Title */}
+          <h3
+            className="mb-3"
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+              color: '#0F0F11',
+              lineHeight: 1.05,
+              letterSpacing: '0.01em',
+            }}
+          >
+            {service.title.toUpperCase()}
+          </h3>
+
+          {/* Divider */}
+          <div style={{ width: '28px', height: '2px', background: 'var(--color-accent-dark)', marginBottom: '16px' }} />
+
+          {/* Description */}
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.9rem',
+            color: '#6B7280',
+            lineHeight: 1.7,
+            marginBottom: service.features.length > 0 ? '20px' : '0',
+          }}>
             {service.description}
           </p>
 
           {service.features.length > 0 && (
             <ul className="space-y-2">
               {service.features.map((feature, i) => (
-                <li key={i} className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm text-zinc-700">
-                  <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${service.color} flex-shrink-0 mt-1.5`} />
-                  <span className="flex-1">{feature}</span>
+                <li key={i} className="flex items-start gap-3" style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', color: '#4B5563' }}>
+                  <div
+                    style={{
+                      width: '4px',
+                      height: '4px',
+                      borderRadius: '50%',
+                      background: 'var(--color-accent-dark)',
+                      flexShrink: 0,
+                      marginTop: '7px',
+                    }}
+                  />
+                  <span>{feature}</span>
                 </li>
               ))}
             </ul>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </motion.div>
   );
 });
