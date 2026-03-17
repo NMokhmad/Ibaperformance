@@ -29,8 +29,8 @@ export const ContactSection = memo(() => {
       {
         icon: MapPin,
         title: "Adresse",
-        value: settings.adresse || "Paris, France",
-        link: "#",
+        value: settings.adresse || "10 Rue de la Grande Haie, 77130 Montereau-Fault-Yonne",
+        link: "https://maps.app.goo.gl/3URwt6rhch2Z3PJR9",
       },
       {
         icon: Clock,
