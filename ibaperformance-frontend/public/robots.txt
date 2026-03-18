@@ -5,8 +5,7 @@
 User-agent: *
 Allow: /
 
-# Ne pas indexer les assets et fichiers techniques
-Disallow: /assets/
+# Ne pas indexer certains fichiers techniques
 Disallow: /*.json$
 Disallow: /*.map$
 

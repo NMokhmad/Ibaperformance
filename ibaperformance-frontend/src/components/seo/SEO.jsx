@@ -1,14 +1,16 @@
 import { Helmet } from "react-helmet-async";
+import { seoConfig } from "../../config/seo.config";
 
 export function SEO({ 
   title = "IBA Performance - Préparation Moteur & Reprogrammation Automobile",
-  description = "Spécialiste de la reprogrammation moteur et préparation automobile depuis 15 ans. Optimisation de performances, préparation circuit et stage personnalisé. +500 véhicules préparés.",
+  description = "Spécialiste de la reprogrammation moteur et préparation automobile depuis 15 ans. Optimisation de performances, préparation circuit et stage personnalisé. +500 véhicules préparés en Île-de-France.",
   keywords = "reprogrammation moteur, préparation automobile, optimisation performance, stage moteur, préparation circuit, chiptuning, garage performance",
   ogImage = "/assets/og-image.jpg",
   canonical,
   type = "website",
 }) {
-  const siteUrl = "https://ibaperformance.com";
+  const siteUrl = seoConfig.siteUrl;
+  const brandLogo = `${siteUrl}/android-chrome-512x512.png`;
   const fullUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
 
   return (
@@ -50,18 +52,25 @@ export function SEO({
           "name": "IBA Performance",
           "description": description,
           "url": siteUrl,
-          "logo": `${siteUrl}/assets/logo.png`,
+          "logo": brandLogo,
           "image": `${siteUrl}${ogImage}`,
-          "telephone": "+33123456789",
+          "telephone": "+33664826055",
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Paris",
+            "streetAddress": "10 Rue de la Grande Haie",
+            "addressLocality": "Montereau-Fault-Yonne",
+            "postalCode": "77130",
             "addressCountry": "FR",
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 48.3858222,
+            "longitude": 2.9690468,
           },
           "sameAs": [
             "https://www.instagram.com/iba_performance",
           ],
-          "priceRange": "€€€",
+          "priceRange": "€€",
           "openingHoursSpecification": [
             {
               "@type": "OpeningHoursSpecification",

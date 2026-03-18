@@ -11,31 +11,35 @@ export const ContactSection = memo(() => {
   const { settings, loading } = useSettingsContext();
 
   const contactInfo = useMemo(() => {
-    if (!settings) return [];
-    
+    const phone = settings?.telephone || "+33 6 64 82 60 55";
+    const email = settings?.email || "iba.performance@gmail.com";
+    const address =
+      settings?.adresse || "10 Rue de la Grande Haie, 77130 Montereau-Fault-Yonne";
+    const hours = settings?.horaires || "Lun - Ven: 9h - 18h";
+
     return [
       {
         icon: Phone,
         title: "Téléphone",
-        value: settings.telephone || "+33 1 23 45 67 89",
-        link: `tel:${settings.telephone?.replace(/\s/g, "")}`,
+        value: phone,
+        link: `tel:${phone.replace(/\s/g, "")}`,
       },
       {
         icon: Mail,
         title: "Email",
-        value: settings.email || "contact@ibaperformance.fr",
-        link: `mailto:${settings.email}`,
+        value: email,
+        link: `mailto:${email}`,
       },
       {
         icon: MapPin,
         title: "Adresse",
-        value: settings.adresse || "10 Rue de la Grande Haie, 77130 Montereau-Fault-Yonne",
+        value: address,
         link: "https://maps.app.goo.gl/3URwt6rhch2Z3PJR9",
       },
       {
         icon: Clock,
         title: "Horaires",
-        value: settings.horaires || "Lun - Ven: 9h - 18h",
+        value: hours,
         link: "#",
       },
     ];

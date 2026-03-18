@@ -13,8 +13,8 @@ const Home = memo(() => {
     <>
       <SEO 
         title="IBA Performance - Reprogrammation Moteur & Préparation Automobile"
-        description="Spécialiste de la reprogrammation moteur et préparation automobile depuis 15 ans. Optimisation de performances, préparation circuit et stage personnalisé. +500 véhicules préparés à Paris."
-        keywords="reprogrammation moteur, préparation automobile, optimisation performance, stage moteur, préparation circuit, chiptuning, garage performance, IBA Performance Paris"
+        description="Spécialiste de la reprogrammation moteur et préparation automobile depuis 15 ans. Optimisation de performances, préparation circuit et stage personnalisé. +500 véhicules préparés à Montereau-Fault-Yonne."
+        keywords="reprogrammation moteur, préparation automobile, optimisation performance, stage moteur, préparation circuit, chiptuning, garage performance, IBA Performance Montereau-Fault-Yonne"
         canonical="/"
       />
       

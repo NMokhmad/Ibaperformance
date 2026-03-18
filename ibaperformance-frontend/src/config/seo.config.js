@@ -2,14 +2,14 @@ export const seoConfig = {
   defaultTitle: "IBA Performance - Préparation Moteur & Reprogrammation Automobile",
   defaultDescription: "Spécialiste de la reprogrammation moteur et préparation automobile depuis 15 ans. Optimisation de performances, préparation circuit et stage personnalisé.",
   defaultKeywords: "reprogrammation moteur, préparation automobile, optimisation performance, stage moteur",
-  siteUrl: "https://ibaperformance.fr",
+  siteUrl: "https://ibaperformance.com",
   defaultOgImage: "/assets/og-image.jpg",
   
   pages: {
     home: {
       title: "IBA Performance - Reprogrammation Moteur & Préparation Automobile",
-      description: "Spécialiste de la reprogrammation moteur et préparation automobile depuis 15 ans. +500 véhicules préparés à Paris.",
-      keywords: "reprogrammation moteur, préparation automobile, optimisation performance, IBA Performance Paris",
+      description: "Spécialiste de la reprogrammation moteur et préparation automobile depuis 15 ans. +500 véhicules préparés en Île-de-France.",
+      keywords: "reprogrammation moteur, préparation automobile, optimisation performance, IBA Performance Montereau-Fault-Yonne",
       canonical: "/",
     },
     blog: {
@@ -20,7 +20,7 @@ export const seoConfig = {
     },
     realisations: {
       title: "Nos Réalisations - Portfolio Préparation Automobile | IBA Performance",
-      description: "Découvrez nos projets de préparation automobile. +500 véhicules optimisés, reprogrammation moteur et préparation circuit.",
+      description: "Découvrez nos projets de préparation automobile. +500 véhicules optimisés, reprogrammation moteur.",
       keywords: "réalisations préparation auto, portfolio reprogrammation, projets stage moteur",
       canonical: "/realisations",
     },
